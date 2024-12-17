@@ -78,7 +78,7 @@ class MobileFoodAccessSection extends StatelessWidget {
           ),
           Container(
             width: MediaQuery.of(context).size.width,
-            height: context.sized.height * 0.3,
+            height: context.sized.height * 0.4,
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/israf/foods.webp'),

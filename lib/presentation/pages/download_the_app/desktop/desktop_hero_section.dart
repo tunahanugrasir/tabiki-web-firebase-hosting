@@ -66,7 +66,7 @@ Widget desktopBuildHeroSection(BuildContext context) {
                     ).animate().fadeIn(delay: 600.ms).slideX(),
                     _buildStoreButton(
                       context,
-                      'assets/icons/play-store.png',
+                      'assets/icons/play-store.webp',
                       'Google Play\'den İndir',
                       () {},
                     ).animate().fadeIn(delay: 800.ms).slideX(),
@@ -81,7 +81,7 @@ Widget desktopBuildHeroSection(BuildContext context) {
             alignment: Alignment.centerRight,
             children: [
               Image.asset(
-                'assets/mockups/3.png',
+                'assets/mockups/3.webp',
                 height: context.sized.height * 0.7,
               )
             ],

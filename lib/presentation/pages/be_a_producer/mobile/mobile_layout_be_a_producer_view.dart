@@ -128,7 +128,7 @@ class _MobileLayoutBeAProducerViewState extends State<MobileLayoutBeAProducerVie
           ),
           const SizedBox(height: 24),
           Image.asset(
-            'assets/be_producer/family.png',
+            'assets/be_producer/family.webp',
             width: context.sized.width * 0.8,
             fit: BoxFit.contain,
           ),

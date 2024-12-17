@@ -13,7 +13,7 @@ Widget mobileDownloadHeroSection(BuildContext context) {
           top: context.sized.height * 0.5,
           left: context.sized.width * 0.2,
           child: Image.asset(
-            'assets/mockups/3.png',
+            'assets/mockups/3.webp',
             height: context.sized.height * 0.5,
             width: context.sized.width * 1.5,
             fit: BoxFit.contain,
@@ -28,22 +28,6 @@ Widget mobileDownloadHeroSection(BuildContext context) {
           ),
           child: Column(
             children: [
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                decoration: BoxDecoration(
-                  color: const Color(0xFF34D399).withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Text(
-                  "Mobil Uygulama",
-                  style: GoogleFonts.merriweather(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: const Color(0xFF059669),
-                  ),
-                ),
-              ).animate().fadeIn(duration: 600.ms).slideX(),
-              const SizedBox(height: 24),
               Text(
                 "tabiki'yi Hemen İndirin\nYerel Lezzetlere Ulaşın",
                 textAlign: TextAlign.center,
@@ -76,7 +60,7 @@ Widget mobileDownloadHeroSection(BuildContext context) {
                   const SizedBox(height: 16),
                   _buildStoreButton(
                     context,
-                    'assets/icons/play-store.png',
+                    'assets/icons/play-store.webp',
                     'Google Play\'den İndir',
                     () {},
                   ).animate().fadeIn(delay: 800.ms).slideX(),

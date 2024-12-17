@@ -17,10 +17,10 @@ class MobileHowItWorks extends StatelessWidget {
         children: [
           Positioned(
             left: 0,
-            bottom: -context.sized.height * 0.72,
+            bottom: -context.sized.height * 0.75,
             right: 0,
             child: Image.asset(
-              'assets/mobile/israf.png',
+              'assets/mobile/israf.webp',
               fit: BoxFit.contain,
               width: context.sized.width,
               height: context.sized.height,
@@ -29,8 +29,9 @@ class MobileHowItWorks extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                SizedBox(height: context.sized.height * 0.15),
                 Text(
                   'Nasıl Çalışır?',
                   style: TextStyle(

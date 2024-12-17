@@ -12,6 +12,7 @@ class MobileWhyChooseUs extends StatelessWidget {
       width: double.infinity,
       color: const Color(0xFFFDF6E7),
       child: Stack(
+        clipBehavior: Clip.none,
         children: [
           Positioned(
             left: 30,
@@ -20,86 +21,87 @@ class MobileWhyChooseUs extends StatelessWidget {
               height: context.sized.height * 0.5,
               width: context.sized.width,
               child: Image.asset(
-                'assets/israf/bag.png',
+                'assets/israf/bag.webp',
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          Container(
-            height: context.sized.height * 0.6,
-            width: double.infinity,
-            padding: EdgeInsets.symmetric(horizontal: context.sized.width * 0.05),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'NEDEN tabiki\'yi',
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.poppins(
-                    fontSize: context.sized.height * 0.03,
-                    fontWeight: FontWeight.bold,
-                    color: const Color(0xFF00796B),
+          Positioned(
+            top: -context.sized.height * 0.02,
+            child: Container(
+              height: context.sized.height * 0.6,
+              width: context.sized.width,
+              padding: EdgeInsets.symmetric(horizontal: context.sized.width * 0.05),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    'NEDEN tabiki\'yi',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                      fontSize: context.sized.height * 0.03,
+                      fontWeight: FontWeight.bold,
+                      color: const Color(0xFF00796B),
+                    ),
                   ),
-                ),
-                SizedBox(height: context.sized.height * 0.01),
-                Text(
-                  'KULLANMALIYIM?',
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.poppins(
-                    fontSize: context.sized.height * 0.03,
-                    fontWeight: FontWeight.bold,
-                    color: const Color(0xFF00796B),
+                  Text(
+                    'KULLANMALIYIM?',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                      fontSize: context.sized.height * 0.03,
+                      fontWeight: FontWeight.bold,
+                      color: const Color(0xFF00796B),
+                    ),
                   ),
-                ),
-                SizedBox(height: context.sized.height * 0.03),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: _buildFeature(
-                              context: context,
-                              icon: Icons.handshake,
-                              title: 'ÇİFTÇİDEN SOFRANIZA, ARADA KİMSE YOK',
-                              color: const Color(0xFF1E4D56),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(
+                              child: _buildFeature(
+                                context: context,
+                                icon: Icons.handshake,
+                                title: 'ÇİFTÇİDEN SOFRANIZA, ARADA KİMSE YOK',
+                                color: const Color(0xFF1E4D56),
+                              ),
                             ),
-                          ),
-                          Expanded(
-                            child: _buildFeature(
-                              context: context,
-                              icon: Icons.emoji_nature,
-                              title: 'İSRAFI ÖNLERKEN KAZANIRSINIZ!',
-                              color: const Color(0xFF1E4D56),
+                            Expanded(
+                              child: _buildFeature(
+                                context: context,
+                                icon: Icons.emoji_nature,
+                                title: 'İSRAFI ÖNLERKEN KAZANIRSINIZ!',
+                                color: const Color(0xFF1E4D56),
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: _buildFeature(
-                              context: context,
-                              icon: Icons.eco,
-                              title: 'TAZELİK VE DOĞALLIK GARANTİSİ',
-                              color: const Color(0xFF1E4D56),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: _buildFeature(
+                                context: context,
+                                icon: Icons.eco,
+                                title: 'TAZELİK VE DOĞALLIK GARANTİSİ',
+                                color: const Color(0xFF1E4D56),
+                              ),
                             ),
-                          ),
-                          Expanded(
-                            child: _buildFeature(
-                              context: context,
-                              icon: Icons.favorite,
-                              title: 'HER ÜRÜN BİR DEĞER, HER ALIŞVERİŞ BİR DESTEK!',
-                              color: const Color(0xFF1E4D56),
+                            Expanded(
+                              child: _buildFeature(
+                                context: context,
+                                icon: Icons.favorite,
+                                title: 'HER ÜRÜN BİR DEĞER, HER ALIŞVERİŞ BİR DESTEK!',
+                                color: const Color(0xFF1E4D56),
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],

@@ -95,7 +95,7 @@ class MobileDrawer extends StatelessWidget {
                 const SizedBox(height: 16),
                 _buildStoreButtonNew(
                   'Play Store',
-                  'assets/icons/play-store.png',
+                  'assets/icons/play-store.webp',
                   'Android cihazlar için',
                   () {
                     // TODO: Add Play Store link

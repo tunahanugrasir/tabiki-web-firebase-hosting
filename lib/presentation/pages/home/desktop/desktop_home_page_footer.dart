@@ -128,7 +128,7 @@ class HomePageFooter extends StatelessWidget {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Image.asset(
-                                        "assets/icons/play-store.png",
+                                        "assets/icons/play-store.webp",
                                         fit: BoxFit.contain,
                                         height: 20,
                                       ),

@@ -18,7 +18,7 @@ class MobileFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: context.sized.height,
+      height: context.sized.height * 1,
       width: double.infinity,
       decoration: BoxDecoration(
         color: backgroundColor,
@@ -31,7 +31,7 @@ class MobileFooter extends StatelessWidget {
         padding: EdgeInsets.only(
           left: context.sized.width * 0.1,
           right: context.sized.width * 0.1,
-          top: context.sized.height * 0.3,
+          top: context.sized.height * 0.25,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -102,7 +102,7 @@ class MobileFooter extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Image.asset(
-                          "assets/icons/play-store.png",
+                          "assets/icons/play-store.webp",
                           fit: BoxFit.contain,
                           height: 20,
                         ),

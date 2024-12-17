@@ -22,10 +22,12 @@ class WhyChooseUs extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          Align(
-            alignment: Alignment.center,
+          Positioned(
+            top: -context.sized.height * 0.02,
+            left: context.sized.width * 0.02,
+            right: 0,
             child: Image.asset(
-              'assets/israf/bag.png',
+              'assets/israf/bag.webp',
               fit: BoxFit.contain,
             ),
           ),

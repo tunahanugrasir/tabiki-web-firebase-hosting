@@ -54,7 +54,7 @@ Widget mobileLayoutBeAProducerTimeline(BuildContext context) {
                     description: "Uygulamamızı indirin ve üretici olarak kayıt olun",
                     stepNumber: "1",
                     gradientColors: TimelineColors.step1Colors,
-                    imagePath: "assets/be_producer/register.png",
+                    imagePath: "assets/be_producer/register.webp",
                     isLeft: true,
                   ),
                   MobileTimelineStep(
@@ -63,7 +63,7 @@ Widget mobileLayoutBeAProducerTimeline(BuildContext context) {
                     description: "Ürünlerinizi kolayca sisteme ekleyin",
                     stepNumber: "2",
                     gradientColors: TimelineColors.step2Colors,
-                    imagePath: "assets/be_producer/product.png",
+                    imagePath: "assets/be_producer/product.webp",
                     isLeft: false,
                   ),
                   MobileTimelineStep(
@@ -72,7 +72,7 @@ Widget mobileLayoutBeAProducerTimeline(BuildContext context) {
                     description: "Ürünlerinizi ekip arkadaşlarımız gelene kadar hazırlayın",
                     stepNumber: "3",
                     gradientColors: TimelineColors.step3Colors,
-                    imagePath: "assets/be_producer/team.png",
+                    imagePath: "assets/be_producer/team.webp",
                     isLeft: true,
                   ),
                   MobileTimelineStep(
@@ -81,7 +81,7 @@ Widget mobileLayoutBeAProducerTimeline(BuildContext context) {
                     description: "Ürünler bize ulaştıktan sonra gerisini bize bırakın ve siparişlerinizin bildirimini keyifle dinleyin",
                     stepNumber: "4",
                     gradientColors: TimelineColors.step4Colors,
-                    imagePath: "assets/be_producer/order.png",
+                    imagePath: "assets/be_producer/order.webp",
                     isLeft: false,
                     isLast: true,
                   ),

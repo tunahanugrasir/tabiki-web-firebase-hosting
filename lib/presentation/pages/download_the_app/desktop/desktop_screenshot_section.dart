@@ -84,12 +84,12 @@ Widget dekstopBuildScreenshotsSection(BuildContext context) {
 
 final List<Map<String, String>> _screenshotDetails = [
   {
-    'image': 'assets/mockups/1.png',
+    'image': 'assets/mockups/1.webp',
     'title': 'Bölgenizdeki Üreticileri ve Ürünlerini Keşfedin',
     'description': 'Yerel üreticilerimizin taze ve doğal ürünlerine doğrudan ulaşın',
   },
   {
-    'image': 'assets/mockups/2.png',
+    'image': 'assets/mockups/2.webp',
     'title': 'İstediğiniz Yere, İstediğiniz Zaman Sipariş Verin',
     'description': 'Siparişlerinizi kolayca oluşturun ve anlık olarak takip edin',
   },
