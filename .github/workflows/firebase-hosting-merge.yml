@@ -12,10 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      # Flutter kurulumu
+      # Flutter kurulumu - versiyonu belirtelim
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.16.0'
+          flutter-version: '3.16.9'  # Güncel stabil versiyon
           channel: 'stable'
       
       # Flutter bağımlılıklarını yükleme
