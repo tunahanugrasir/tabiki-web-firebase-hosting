@@ -15,7 +15,7 @@ jobs:
       # Flutter kurulumu - versiyonu belirtelim
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.19.0'  # En son stabil versiyon
+          flutter-version: '3.27.1'  # En son stabil versiyon
           channel: 'stable'
       
       # Flutter bağımlılıklarını yükleme
