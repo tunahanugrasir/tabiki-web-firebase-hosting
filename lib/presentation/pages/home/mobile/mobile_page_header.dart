@@ -31,7 +31,7 @@ class MobileHomePageHeader extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    "tabiki doğal, tabiki yerel!",
+                    "nilhan tunahan",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.merriweather(
                       fontSize: context.sized.height * 0.03,
