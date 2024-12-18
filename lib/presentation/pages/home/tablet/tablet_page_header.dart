@@ -22,113 +22,91 @@ class TabletPageHeader extends StatelessWidget {
       ),
       child: Column(
         children: [
-          // Logo ve üst sıra butonları
-          Row(
-            children: [
-              // Logo
-              Expanded(
-                flex: 3,
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ResponsiveHomePage(),
-                      ),
-                    );
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "tabiki",
-                      maxLines: 1,
-                      style: GoogleFonts.merriweather(
-                        fontWeight: FontWeight.bold,
-                        fontSize: context.sized.width * 0.035,
-                        color: const Color.fromRGBO(51, 110, 122, 1),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+          _buildTopRow(context),
+          _buildBottomRow(context),
+        ],
+      ),
+    );
+  }
 
-              // Üst sıra butonları
-              Expanded(
-                flex: 7,
-                child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      _buildNavButton(
-                        context: context,
-                        title: "Üreticimiz Ol",
-                        onPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const ResponsiveBeAProducerPage(),
-                          ),
-                        ),
-                      ),
-                      _buildNavButton(
-                        context: context,
-                        title: "Uygulamamızı İndir",
-                        onPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const ResponsiveDownloadTheAppPage(),
-                          ),
-                        ),
-                      ),
-                      _buildNavButton(
-                        context: context,
-                        title: "İsrafı Önleyelim",
-                        onPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const ResponsiveLayoutIsrafPage(),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
+  Widget _buildTopRow(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          flex: 3,
+          child: _buildLogo(context),
+        ),
+        Expanded(
+          flex: 7,
+          child: _buildTopNavButtons(context),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildLogo(BuildContext context) {
+    return GestureDetector(
+      onTap: () => _navigateTo(context, const ResponsiveHomePage()),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Image.asset(
+          'assets/logo/tabiki-appbar-logo.png',
+          fit: BoxFit.cover,
+          height: context.sized.height * 0.08,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTopNavButtons(BuildContext context) {
+    return FittedBox(
+      fit: BoxFit.scaleDown,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          _buildNavButton(
+            context: context,
+            title: "Üreticimiz Ol",
+            onPressed: () => _navigateTo(context, const ResponsiveBeAProducerPage()),
           ),
-
-          // Alt sıra butonları
-          Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _buildNavButton(
-                  context: context,
-                  title: "Mağazalarımız",
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ResponsiveLayoutStoresPage(),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 16),
-                _buildNavButton(
-                  context: context,
-                  title: "İletişim",
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ResponsiveContactPage(),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+          _buildNavButton(
+            context: context,
+            title: "Uygulamamızı İndir",
+            onPressed: () => _navigateTo(context, const ResponsiveDownloadTheAppPage()),
+          ),
+          _buildNavButton(
+            context: context,
+            title: "İsrafı Önleyelim",
+            onPressed: () => _navigateTo(context, const ResponsiveLayoutIsrafPage()),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildBottomRow(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        _buildNavButton(
+          context: context,
+          title: "Mağazalarımız",
+          onPressed: () => _navigateTo(context, const ResponsiveLayoutStoresPage()),
+        ),
+        const SizedBox(width: 16),
+        _buildNavButton(
+          context: context,
+          title: "İletişim",
+          onPressed: () => _navigateTo(context, const ResponsiveContactPage()),
+        ),
+      ],
+    );
+  }
+
+  void _navigateTo(BuildContext context, Widget page) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => page),
     );
   }
 
@@ -141,16 +119,16 @@ class TabletPageHeader extends StatelessWidget {
       height: 40,
       child: ElevatedButton(
         onPressed: onPressed,
-        style: ButtonStyle(
-          backgroundColor: WidgetStateProperty.all(Colors.transparent),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          foregroundColor: const Color.fromRGBO(51, 110, 122, 1),
+          shadowColor: Colors.transparent,
+          surfaceTintColor: Colors.transparent,
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          elevation: 0,
+        ).copyWith(
           overlayColor: WidgetStateProperty.resolveWith<Color?>(
             (states) => states.contains(WidgetState.pressed) ? const Color.fromRGBO(51, 110, 122, 0.1) : Colors.transparent,
-          ),
-          shadowColor: WidgetStateProperty.all(Colors.transparent),
-          foregroundColor: WidgetStateProperty.all(const Color.fromRGBO(51, 110, 122, 1)),
-          surfaceTintColor: WidgetStateProperty.all(Colors.transparent),
-          padding: WidgetStateProperty.all(
-            const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
           ),
         ),
         child: Text(

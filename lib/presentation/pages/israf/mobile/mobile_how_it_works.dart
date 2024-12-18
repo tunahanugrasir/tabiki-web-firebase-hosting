@@ -14,16 +14,17 @@ class MobileHowItWorks extends StatelessWidget {
       width: double.infinity,
       color: const Color(0xFFFDF6E7),
       child: Stack(
+        clipBehavior: Clip.none,
         children: [
           Positioned(
             left: 0,
-            bottom: -context.sized.height * 0.75,
             right: 0,
+            bottom: -context.sized.height * 0.75,
             child: Image.asset(
               'assets/mobile/israf.webp',
-              fit: BoxFit.contain,
-              width: context.sized.width,
+              fit: BoxFit.cover,
               height: context.sized.height,
+              width: context.sized.width,
             ),
           ),
           Padding(

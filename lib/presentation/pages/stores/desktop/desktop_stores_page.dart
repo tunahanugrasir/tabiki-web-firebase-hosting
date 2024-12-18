@@ -19,7 +19,7 @@ class _DesktopStoresPageState extends State<DesktopStoresPage> {
     {
       'name': 'tabiki Fethiye',
       'address': 'Cumhuriyet, 500. Sk., 48300 Fethiye/Muğla',
-      'phone': '+90 (216) 123 45 67',
+      'phone': '+90 (530) 697 89 70',
       'workingHours': '09:00 - 22:00',
       'image': 'assets/stores/tabiki-fethiye.webp',
       'panorama': 'assets/stores/panorama-fethiye.png',
@@ -43,7 +43,7 @@ class _DesktopStoresPageState extends State<DesktopStoresPage> {
     {
       'name': 'tabiki Bodrum',
       'address': 'Eskiçeşme, Neyzen Tevfik Cd. No:170, 48400 Bodrum/Muğla',
-      'phone': '+90 (212) 345 67 89',
+      'phone': '+90 (530) 697 89 70',
       'workingHours': '09:00 - 22:00',
       'image': 'assets/stores/tabiki-gocek.webp',
       'panorama': 'assets/stores/panorama-gocek.webp',
@@ -67,7 +67,7 @@ class _DesktopStoresPageState extends State<DesktopStoresPage> {
     {
       'name': 'tabiki Marmaris',
       'address': 'Kemeraltı, Atatürk Cd. No:26, 48700 Marmaris/Muğla',
-      'phone': '+90 (212) 567 89 01',
+      'phone': '+90 (530) 697 89 70',
       'workingHours': '09:00 - 22:00',
       'image': 'assets/stores/tabiki-marmaris.webp',
       'panorama': 'assets/stores/panorama-marmaris.png',
@@ -91,7 +91,7 @@ class _DesktopStoresPageState extends State<DesktopStoresPage> {
     {
       'name': 'tabiki Köyceğiz',
       'address': 'Ulucami, Cengiz Topel Cd. No:58/B, 48800 Köyceğiz/Muğla',
-      'phone': '+90 (212) 567 89 01',
+      'phone': '+90 (530) 697 89 70',
       'workingHours': '09:00 - 22:00',
       'image': 'assets/stores/tabiki-koycegız.webp',
       'panorama': 'assets/stores/panorama-koycegız.png',

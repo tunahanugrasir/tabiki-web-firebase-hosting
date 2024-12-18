@@ -23,8 +23,8 @@ class WhyChooseUs extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
-            top: -context.sized.height * 0.02,
-            left: context.sized.width * 0.02,
+            left: context.sized.width * 0.04,
+            bottom: context.sized.height * 0.02,
             right: 0,
             child: Image.asset(
               'assets/israf/bag.webp',

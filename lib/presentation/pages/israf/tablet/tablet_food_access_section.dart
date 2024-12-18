@@ -2,37 +2,44 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
 
-class MobileFoodAccessSection extends StatelessWidget {
-  const MobileFoodAccessSection({super.key});
+class TabletFoodAccessSection extends StatelessWidget {
+  const TabletFoodAccessSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: const Color(0xFFFDF6E7),
-      child: Column(
+    return SizedBox(
+      height: context.sized.height * 0.9,
+      width: context.sized.width,
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(
-            width: double.infinity,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+          Expanded(
+            child: Container(
+              color: const Color.fromRGBO(254, 249, 235, 1),
+              padding: EdgeInsets.symmetric(
+                horizontal: context.sized.width * 0.04,
+                vertical: context.sized.height * 0.04
+              ),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     '"Çiftçiden Sofraya, İsrafı Durdurmak İçin tabiki Yanınızda!"',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
-                      fontSize: 22,
+                      fontSize: context.sized.width * 0.03,
                       fontWeight: FontWeight.w900,
                       color: Colors.black,
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: context.sized.height * 0.02),
                   RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
                       style: GoogleFonts.poppins(
-                        fontSize: 14,
+                        fontSize: context.sized.width * 0.015,
                         color: Colors.black,
                       ),
                       children: const [
@@ -76,17 +83,16 @@ class MobileFoodAccessSection extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: context.sized.height * 0.4,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/israf/foods.webp'),
-                fit: BoxFit.cover,
+          Expanded(
+            child: Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/israf/foods.webp'),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
-          SizedBox(height: context.sized.height * 0.1),
         ],
       ),
     );

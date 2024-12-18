@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
-import 'package:tabiki_web/presentation/pages/home/desktop/desktop_page_header.dart';
+import 'package:tabiki_web/presentation/pages/home/tablet/tablet_page_header.dart';
 
-class HowItWorks extends StatelessWidget {
-  const HowItWorks({
+class TabletHowItWorks extends StatelessWidget {
+  const TabletHowItWorks({
     super.key,
   });
 
@@ -13,7 +13,7 @@ class HowItWorks extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          height: context.sized.height * 0.75,
+          height: context.sized.height * 0.7,
           width: double.infinity,
           color: const Color(0xFFFDF6E7),
           child: Stack(
@@ -33,10 +33,10 @@ class HowItWorks extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       'Nasıl Çalışır?',
-                      style: TextStyle(
-                        fontSize: 16,
+                      style: GoogleFonts.poppins(
+                        fontSize: context.sized.width * 0.018,
                         fontWeight: FontWeight.w600,
                         color: Colors.black87,
                       ),
@@ -46,7 +46,7 @@ class HowItWorks extends StatelessWidget {
                       ' “Lezzeti Aynı, İsrafı Sıfır: Taze Ürünler Daha Uygun Fiyatlarla!”',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.poppins(
-                        fontSize: 48,
+                        fontSize: context.sized.width * 0.04,
                         fontWeight: FontWeight.bold,
                         color: Colors.black87,
                       ),
@@ -84,7 +84,7 @@ class HowItWorks extends StatelessWidget {
               horizontal: context.sized.width * 0.1,
               vertical: context.sized.height * 0.05,
             ),
-            child: const DesktopPageHeader()),
+            child: const TabletPageHeader()),
       ],
     );
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:kartal/kartal.dart';
 
 class MobileAppBar extends StatelessWidget {
   const MobileAppBar({
@@ -10,19 +10,17 @@ class MobileAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      title: Text(
-        'tabiki',
-        style: GoogleFonts.merriweather(
-          fontWeight: FontWeight.bold,
-          fontSize: 24,
-          color: const Color.fromRGBO(51, 110, 122, 1),
-        ),
+      title: Image.asset(
+        'assets/logo/tabiki-appbar-logo.png',
+        fit: BoxFit.cover,
+        width: context.sized.width * 0.2,
+        height: context.sized.height * 0.05,
       ),
       backgroundColor: Colors.white,
       surfaceTintColor: Colors.transparent,
       shadowColor: Colors.transparent,
       foregroundColor: const Color.fromRGBO(51, 110, 122, 1),
-      elevation: 0,
+      elevation: 4,
     );
   }
 }

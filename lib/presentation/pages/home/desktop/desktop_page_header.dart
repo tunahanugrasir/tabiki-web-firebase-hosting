@@ -15,131 +15,92 @@ class DesktopPageHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const ResponsiveHomePage(),
-                ),
-              );
-            },
-            child: Text(
-              "tabiki",
-              maxLines: 3,
-              style: GoogleFonts.merriweather(
-                fontWeight: FontWeight.bold,
-                fontSize: context.sized.width * 0.03,
-                color: const Color.fromRGBO(51, 110, 122, 1),
+    return Container(
+      constraints: BoxConstraints(
+        maxWidth: context.sized.width,
+        maxHeight: context.sized.height * 0.2,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            flex: 2,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ResponsiveHomePage(),
+                  ),
+                );
+              },
+              child: Image.asset(
+                'assets/logo/tabiki-appbar-logo.png',
+                fit: BoxFit.cover,
+                height: context.sized.height * 0.1,
               ),
             ),
           ),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveBeAProducerPage()));
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.transparent,
-            overlayColor: Colors.transparent,
-            shadowColor: Colors.transparent,
-            foregroundColor: const Color.fromRGBO(51, 110, 122, 1),
-            surfaceTintColor: Colors.transparent,
-          ),
-          child: Text(
-            "Üreticimiz Ol",
-            style: GoogleFonts.merriweather(
-              fontSize: 15,
-              fontWeight: FontWeight.bold,
-              color: const Color.fromRGBO(51, 110, 122, 1),
+          Expanded(
+            flex: 8,
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Wrap(
+                alignment: WrapAlignment.end,
+                spacing: 8,
+                runSpacing: 8,
+                children: [
+                  _buildHeaderButton(
+                    "Üreticimiz Ol",
+                    () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveBeAProducerPage())),
+                  ),
+                  _buildHeaderButton(
+                    "Uygulamamızı İndir",
+                    () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveDownloadTheAppPage())),
+                  ),
+                  _buildHeaderButton(
+                    "İsrafı Önleyelim",
+                    () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveLayoutIsrafPage())),
+                  ),
+                  _buildHeaderButton(
+                    "Mağazalarımız",
+                    () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveLayoutStoresPage())),
+                  ),
+                  _buildHeaderButton(
+                    "İletişim",
+                    () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveContactPage())),
+                  ),
+                  const SizedBox(width: 20),
+                ],
+              ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildHeaderButton(String text, VoidCallback onPressed) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.transparent,
+        overlayColor: Colors.transparent,
+        shadowColor: Colors.transparent,
+        foregroundColor: const Color.fromRGBO(51, 110, 122, 1),
+        surfaceTintColor: Colors.transparent,
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        minimumSize: Size.zero,
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      ),
+      child: Text(
+        text,
+        style: GoogleFonts.merriweather(
+          fontSize: 15,
+          fontWeight: FontWeight.bold,
+          color: const Color.fromRGBO(51, 110, 122, 1),
         ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveDownloadTheAppPage()));
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.transparent,
-            overlayColor: Colors.transparent,
-            shadowColor: Colors.transparent,
-            foregroundColor: const Color.fromRGBO(51, 110, 122, 1),
-            surfaceTintColor: Colors.transparent,
-          ),
-          child: Text(
-            "Uygulamamızı İndir",
-            style: GoogleFonts.merriweather(
-              fontSize: 15,
-              fontWeight: FontWeight.bold,
-              color: const Color.fromRGBO(51, 110, 122, 1),
-            ),
-          ),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveLayoutIsrafPage()));
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.transparent,
-            overlayColor: Colors.transparent,
-            shadowColor: Colors.transparent,
-            foregroundColor: const Color.fromRGBO(51, 110, 122, 1),
-            surfaceTintColor: Colors.transparent,
-          ),
-          child: Text(
-            "İsrafı Önleyelim",
-            style: GoogleFonts.merriweather(
-              fontSize: 15,
-              fontWeight: FontWeight.bold,
-              color: const Color.fromRGBO(51, 110, 122, 1),
-            ),
-          ),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveLayoutStoresPage()));
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.transparent,
-            overlayColor: Colors.transparent,
-            shadowColor: Colors.transparent,
-            foregroundColor: const Color.fromRGBO(51, 110, 122, 1),
-            surfaceTintColor: Colors.transparent,
-          ),
-          child: Text(
-            "Mağazalarımız",
-            style: GoogleFonts.merriweather(
-              fontSize: 15,
-              fontWeight: FontWeight.bold,
-              color: const Color.fromRGBO(51, 110, 122, 1),
-            ),
-          ),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveContactPage()));
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.transparent,
-            overlayColor: Colors.transparent,
-            shadowColor: Colors.transparent,
-            foregroundColor: const Color.fromRGBO(51, 110, 122, 1),
-            surfaceTintColor: Colors.transparent,
-          ),
-          child: Text(
-            "İletişim",
-            style: GoogleFonts.merriweather(
-              fontSize: 15,
-              fontWeight: FontWeight.bold,
-              color: const Color.fromRGBO(51, 110, 122, 1),
-            ),
-          ),
-        ),
-        const SizedBox(width: 50),
-      ],
+      ),
     );
   }
 }

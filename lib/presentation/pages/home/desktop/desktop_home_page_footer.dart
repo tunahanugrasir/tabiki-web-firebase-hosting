@@ -62,13 +62,11 @@ class HomePageFooter extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(
-                          "tabiki",
-                          style: GoogleFonts.merriweather(
-                            fontSize: context.sized.width * 0.035,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
+                        Image.asset(
+                          "assets/logo/tabiki-appbar-logo.png",
+                          fit: BoxFit.contain,
+                          color: Colors.white,
+                          width: context.sized.width * 0.1,
                         ),
                         SizedBox(
                           width: context.sized.width * 0.2,

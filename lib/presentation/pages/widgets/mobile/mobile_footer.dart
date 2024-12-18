@@ -37,14 +37,11 @@ class MobileFooter extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              "tabiki",
-              textAlign: TextAlign.center,
-              style: GoogleFonts.merriweather(
-                fontSize: context.sized.height * 0.04,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
+            Image.asset(
+              "assets/logo/tabiki-appbar-logo.png",
+              fit: BoxFit.contain,
+              color: Colors.white,
+              height: context.sized.height * 0.075,
             ),
             const SizedBox(height: 20),
             Wrap(
