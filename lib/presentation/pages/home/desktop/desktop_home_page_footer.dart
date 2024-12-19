@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
+import 'package:tabiki_web/presentation/pages/be_a_producer/responsive_be_a_producer_page.dart';
+import 'package:tabiki_web/presentation/pages/contact/responsive_contact_page.dart';
+import 'package:tabiki_web/presentation/pages/download_the_app/responsive_download_the_app_page.dart';
+import 'package:tabiki_web/presentation/pages/israf/responsive_layout_israf_page.dart';
+import 'package:tabiki_web/presentation/pages/stores/responsive_stores_page.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:tabiki_web/presentation/pages/legal-notices/responsive_layout_legal_notices.dart';
 
 class HomePageFooter extends StatelessWidget {
   final Color? backgroundColor;
@@ -175,32 +181,36 @@ class HomePageFooter extends StatelessWidget {
                             color: const Color.fromRGBO(185, 224, 224, 1),
                           ),
                         ),
-                        Text(
-                          "Üreticimiz Ol",
-                          style: GoogleFonts.merriweather(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveBeAProducerPage()));
+                          },
+                          child: Text(
+                            "Üreticimiz Ol",
+                            style: GoogleFonts.merriweather(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
-                        Text(
-                          "Uygulamamızı İndir",
-                          style: GoogleFonts.merriweather(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveDownloadTheAppPage()));
+                          },
+                          child: Text(
+                            "Uygulamamızı İndir",
+                            style: GoogleFonts.merriweather(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
-                        Text(
-                          "Mağazalarımız",
-                          style: GoogleFonts.merriweather(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                        Opacity(
-                          opacity: 0,
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveLayoutStoresPage()));
+                          },
                           child: Text(
                             "Mağazalarımız",
                             style: GoogleFonts.merriweather(
@@ -210,10 +220,25 @@ class HomePageFooter extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Opacity(
-                          opacity: 0,
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveLayoutIsrafPage()));
+                          },
                           child: Text(
-                            "Mağazalarımız",
+                            "İsrafı Önleyelim",
+                            style: GoogleFonts.merriweather(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveContactPage()));
+                          },
+                          child: Text(
+                            "İletişim",
                             style: GoogleFonts.merriweather(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
@@ -285,14 +310,81 @@ class HomePageFooter extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 200, bottom: 20),
-            child: Text(
-              "Legal Notices - Terms & Conditions - Privacy policy",
-              style: GoogleFonts.merriweather(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
+            padding: const EdgeInsets.only(left: 10, bottom: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ResponsiveLayoutLegalNotices(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    "Yasal Bildirimler",
+                    style: GoogleFonts.merriweather(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                Text(
+                  " - ",
+                  style: GoogleFonts.merriweather(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ResponsiveLayoutLegalNotices(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    "Hizmet Şartları",
+                    style: GoogleFonts.merriweather(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                Text(
+                  " - ",
+                  style: GoogleFonts.merriweather(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ResponsiveLayoutLegalNotices(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    "Gizlilik Politikası",
+                    style: GoogleFonts.merriweather(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],

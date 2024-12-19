@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
+import 'package:tabiki_web/presentation/pages/legal-notices/responsive_layout_legal_notices.dart';
 import 'package:tabiki_web/presentation/pages/widgets/mobile/social_media_links.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -132,16 +133,86 @@ class MobileFooter extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 20),
-            Text(
-              "Legal Notices - Terms & Conditions - Privacy policy",
-              textAlign: TextAlign.center,
-              style: GoogleFonts.merriweather(
-                fontSize: 12,
-                color: Colors.white,
+            const SocialMediaLinks(),
+            const SizedBox(height: 20),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ResponsiveLayoutLegalNotices(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "Yasal Bildirimler",
+                      style: GoogleFonts.merriweather(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    " - ",
+                    style: GoogleFonts.merriweather(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ResponsiveLayoutLegalNotices(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "Hizmet Şartları",
+                      style: GoogleFonts.merriweather(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    " - ",
+                    style: GoogleFonts.merriweather(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ResponsiveLayoutLegalNotices(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "Gizlilik Politikası",
+                      style: GoogleFonts.merriweather(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 20),
-            const SocialMediaLinks(),
           ],
         ),
       ),

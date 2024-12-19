@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
+import 'package:tabiki_web/presentation/pages/be_a_producer/responsive_be_a_producer_page.dart';
+import 'package:tabiki_web/presentation/pages/contact/responsive_contact_page.dart';
+
+import 'package:tabiki_web/presentation/pages/download_the_app/responsive_download_the_app_page.dart';
+
+import 'package:tabiki_web/presentation/pages/israf/responsive_layout_israf_page.dart';
+import 'package:tabiki_web/presentation/pages/legal-notices/responsive_layout_legal_notices.dart';
+import 'package:tabiki_web/presentation/pages/stores/responsive_stores_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class TabletHomePageFooter extends StatelessWidget {
@@ -79,7 +87,7 @@ class TabletHomePageFooter extends StatelessWidget {
                     child: _buildFooterColumn(
                       context,
                       title: "Hizmetlerimiz",
-                      items: const ["Üreticimiz Ol", "Uygulamamızı İndir", "Mağazalarımız"],
+                      items: const ["Üreticimiz Ol", "Uygulamamızı İndir", "Mağazalarımız", "İsrafı Önleyelim", "İletişim"],
                     ),
                   ),
                   Expanded(
@@ -98,13 +106,80 @@ class TabletHomePageFooter extends StatelessWidget {
               bottom: context.sized.height * 0.02,
               left: context.sized.width * 0.05,
             ),
-            child: Text(
-              "Legal Notices - Terms & Conditions - Privacy policy",
-              style: GoogleFonts.merriweather(
-                fontSize: context.sized.width * 0.015,
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ResponsiveLayoutLegalNotices(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    "Yasal Bildirimler",
+                    style: GoogleFonts.merriweather(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                Text(
+                  " - ",
+                  style: GoogleFonts.merriweather(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ResponsiveLayoutLegalNotices(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    "Hizmet Şartları",
+                    style: GoogleFonts.merriweather(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                Text(
+                  " - ",
+                  style: GoogleFonts.merriweather(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ResponsiveLayoutLegalNotices(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    "Gizlilik Politikası",
+                    style: GoogleFonts.merriweather(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -211,12 +286,73 @@ class TabletHomePageFooter extends StatelessWidget {
         const SizedBox(height: 20),
         ...items.map((item) => Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
-              child: Text(
-                item,
-                style: GoogleFonts.merriweather(
-                  fontSize: context.sized.width * 0.015,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white,
+              child: InkWell(
+                onTap: () {
+                  switch (item) {
+                    case "İletişim":
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ResponsiveContactPage(),
+                        ),
+                      );
+                      break;
+                    case "Instagram":
+                      _launchURL('https://instagram.com/tabikiapp');
+                      break;
+                    case "Facebook":
+                      _launchURL('https://facebook.com/tabikiapp');
+                      break;
+                    case "Youtube":
+                      _launchURL('https://youtube.com/tabikiapp');
+                      break;
+                    case "Twitter":
+                      _launchURL('https://twitter.com/tabikiapp');
+                      break;
+                    case "LinkedIn":
+                      _launchURL('https://linkedin.com/company/tabikiapp');
+                      break;
+                    case "Üreticimiz Ol":
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ResponsiveBeAProducerPage(),
+                        ),
+                      );
+                      break;
+                    case "Uygulamamızı İndir":
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ResponsiveDownloadTheAppPage(),
+                        ),
+                      );
+                      break;
+                    case "Mağazalarımız":
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ResponsiveLayoutStoresPage(),
+                        ),
+                      );
+                      break;
+                    case "İsrafı Önleyelim":
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ResponsiveLayoutIsrafPage(),
+                        ),
+                      );
+                      break;
+                  }
+                },
+                child: Text(
+                  item,
+                  style: GoogleFonts.merriweather(
+                    fontSize: context.sized.width * 0.015,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             )),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
 import 'package:tabiki_web/presentation/pages/home/desktop/desktop_page_header.dart';
+import 'package:tabiki_web/presentation/pages/widgets/mobile/mobile_layout_drawer.dart';
 
 class HomePageOne extends StatelessWidget {
   const HomePageOne({
@@ -30,7 +31,6 @@ class HomePageOne extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const DesktopPageHeader(),
-            const SizedBox(height: 100),
             Text(
               "tabiki doğal, tabiki yerel!",
               style: GoogleFonts.merriweather(
@@ -50,7 +50,9 @@ class HomePageOne extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                MobileDrawer.showDownloadDialog(context);
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromRGBO(51, 110, 122, 1),
                 foregroundColor: Colors.white,
