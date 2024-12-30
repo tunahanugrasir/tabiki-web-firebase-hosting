@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
-import 'package:tabiki_web/presentation/pages/contact/responsive_contact_page.dart';
-import 'package:tabiki_web/presentation/pages/download_the_app/responsive_download_the_app_page.dart';
-import 'package:tabiki_web/presentation/pages/israf/responsive_layout_israf_page.dart';
-import 'package:tabiki_web/presentation/pages/be_a_producer/responsive_be_a_producer_page.dart';
-import 'package:tabiki_web/presentation/pages/home/responsive_home_page.dart';
-import 'package:tabiki_web/presentation/pages/stores/responsive_stores_page.dart';
 
 class DesktopPageHeader extends StatelessWidget {
   const DesktopPageHeader({
@@ -26,14 +21,7 @@ class DesktopPageHeader extends StatelessWidget {
           Expanded(
             flex: 2,
             child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ResponsiveHomePage(),
-                  ),
-                );
-              },
+              onTap: () => context.go('/'),
               child: Image.asset(
                 'assets/logo/tabiki-appbar-logo.png',
                 fit: BoxFit.cover,
@@ -52,23 +40,23 @@ class DesktopPageHeader extends StatelessWidget {
                 children: [
                   _buildHeaderButton(
                     "Üreticimiz Ol",
-                    () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveBeAProducerPage())),
+                    () => context.go('/ureticimiz-ol'),
                   ),
                   _buildHeaderButton(
                     "Uygulamamızı İndir",
-                    () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveDownloadTheAppPage())),
+                    () => context.go('/uygulamamizi-indir'),
                   ),
                   _buildHeaderButton(
                     "İsrafı Önleyelim",
-                    () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveLayoutIsrafPage())),
+                    () => context.go('/israfi-onleyelim'),
                   ),
                   _buildHeaderButton(
                     "Mağazalarımız",
-                    () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveLayoutStoresPage())),
+                    () => context.go('/magazalarimiz'),
                   ),
                   _buildHeaderButton(
                     "İletişim",
-                    () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveContactPage())),
+                    () => context.go('/iletisim'),
                   ),
                   const SizedBox(width: 20),
                 ],

@@ -48,7 +48,7 @@ Widget mobileDownloadReviewsSection(BuildContext context) {
       color: Colors.white,
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.05),
+          color: Colors.black.withValues(alpha: 0.05),
           blurRadius: 20,
           offset: const Offset(0, -10),
         ),
@@ -71,7 +71,7 @@ Widget mobileDownloadReviewsSection(BuildContext context) {
           textAlign: TextAlign.center,
           style: GoogleFonts.merriweather(
             fontSize: 16,
-            color: const Color(0xFF065F46).withOpacity(0.8),
+            color: const Color(0xFF065F46).withValues(alpha: 0.8),
           ),
         ).animate().fadeIn(delay: 200.ms),
         const SizedBox(height: 32),
@@ -141,7 +141,7 @@ Widget _buildReviewCard(BuildContext context, Map<String, dynamic> review) {
       borderRadius: BorderRadius.circular(16),
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.05),
+          color: Colors.black.withValues(alpha: 0.05),
           blurRadius: 20,
           offset: const Offset(0, 10),
           spreadRadius: 0,
@@ -189,14 +189,14 @@ Widget _buildReviewCard(BuildContext context, Map<String, dynamic> review) {
                       Icon(
                         Icons.location_on,
                         size: 14,
-                        color: const Color(0xFF065F46).withOpacity(0.6),
+                        color: const Color(0xFF065F46).withValues(alpha: 0.6),
                       ),
                       const SizedBox(width: 4),
                       Text(
                         review['location'],
                         style: GoogleFonts.merriweather(
                           fontSize: 12,
-                          color: const Color(0xFF065F46).withOpacity(0.6),
+                          color: const Color(0xFF065F46).withValues(alpha: 0.6),
                         ),
                       ),
                     ],
@@ -215,7 +215,7 @@ Widget _buildReviewCard(BuildContext context, Map<String, dynamic> review) {
               child: Icon(
                 Icons.star_rounded,
                 size: 16,
-                color: index < review['rating'] ? const Color(0xFFFBBF24) : const Color(0xFFFBBF24).withOpacity(0.2),
+                color: index < review['rating'] ? const Color(0xFFFBBF24) : const Color(0xFFFBBF24).withValues(alpha: 0.2),
               ),
             ),
           ),
@@ -225,7 +225,7 @@ Widget _buildReviewCard(BuildContext context, Map<String, dynamic> review) {
           review['review'],
           style: GoogleFonts.merriweather(
             fontSize: 14,
-            color: const Color(0xFF065F46).withOpacity(0.8),
+            color: const Color(0xFF065F46).withValues(alpha: 0.8),
             height: 1.6,
           ),
         ),
@@ -233,7 +233,7 @@ Widget _buildReviewCard(BuildContext context, Map<String, dynamic> review) {
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: const Color(0xFF34D399).withOpacity(0.1),
+            color: const Color(0xFF34D399).withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Column(

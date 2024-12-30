@@ -103,7 +103,7 @@ Widget _buildContactCard(BuildContext context, IconData icon, String title, Stri
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withValues(alpha: 0.1),
               blurRadius: 20,
               offset: const Offset(0, 10),
             ),
@@ -115,7 +115,7 @@ Widget _buildContactCard(BuildContext context, IconData icon, String title, Stri
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: const Color(0xFF34D399).withOpacity(0.1),
+                color: const Color(0xFF34D399).withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Icon(
@@ -141,7 +141,7 @@ Widget _buildContactCard(BuildContext context, IconData icon, String title, Stri
                   textAlign: TextAlign.center,
                   style: GoogleFonts.merriweather(
                     fontSize: 14,
-                    color: const Color(0xFF065F46).withOpacity(0.8),
+                    color: const Color(0xFF065F46).withValues(alpha: 0.8),
                     height: 1.6,
                   ),
                 ),

@@ -8,10 +8,7 @@ class TabletWasteStatisticsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
-        vertical: context.sized.height * 0.06,
-        horizontal: context.sized.width * 0.04
-      ),
+      padding: EdgeInsets.symmetric(vertical: context.sized.height * 0.06, horizontal: context.sized.width * 0.04),
       decoration: const BoxDecoration(color: Colors.white),
       child: SingleChildScrollView(
         child: Column(
@@ -115,7 +112,7 @@ class TabletWasteStatisticsSection extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: color.withOpacity(0.1),
+            color: color.withValues(alpha: 0.1),
             blurRadius: 20,
             offset: const Offset(0, 10),
           ),
@@ -127,7 +124,7 @@ class TabletWasteStatisticsSection extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(maxWidth * 0.03),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
+              color: color.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Text(
@@ -154,7 +151,7 @@ class TabletWasteStatisticsSection extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(maxWidth * 0.02),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
+              color: color.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(

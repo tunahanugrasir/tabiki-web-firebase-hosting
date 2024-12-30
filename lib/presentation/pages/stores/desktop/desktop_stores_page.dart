@@ -5,7 +5,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:tabiki_web/presentation/pages/home/desktop/desktop_home_page_footer.dart';
 import 'package:tabiki_web/presentation/pages/home/desktop/desktop_page_header.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:panorama/panorama.dart';
+
 
 class DesktopStoresPage extends StatefulWidget {
   const DesktopStoresPage({super.key});
@@ -115,9 +115,6 @@ class _DesktopStoresPageState extends State<DesktopStoresPage> {
   ];
 
   int _selectedStoreIndex = 0;
-  double _panoramaLongitude = 0;
-  double _panoramaLatitude = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -171,7 +168,7 @@ class _DesktopStoresPageState extends State<DesktopStoresPage> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
-              color: const Color(0xFF34D399).withOpacity(0.1),
+              color: const Color(0xFF34D399).withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(30),
             ),
             child: Text(
@@ -200,7 +197,7 @@ class _DesktopStoresPageState extends State<DesktopStoresPage> {
             textAlign: TextAlign.center,
             style: GoogleFonts.merriweather(
               fontSize: 18,
-              color: const Color(0xFF065F46).withOpacity(0.8),
+              color: const Color(0xFF065F46).withValues(alpha: 0.8),
               height: 1.6,
             ),
           ).animate().fadeIn(delay: 400.ms).slideX(),
@@ -274,7 +271,7 @@ class _DesktopStoresPageState extends State<DesktopStoresPage> {
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withValues(alpha: 0.1),
               blurRadius: 20,
               offset: const Offset(0, 10),
             ),
@@ -296,7 +293,7 @@ class _DesktopStoresPageState extends State<DesktopStoresPage> {
               store['address'],
               style: GoogleFonts.merriweather(
                 fontSize: 16,
-                color: isSelected ? Colors.white.withOpacity(0.8) : const Color(0xFF065F46).withOpacity(0.8),
+                color: isSelected ? Colors.white.withValues(alpha: 0.8) : const Color(0xFF065F46).withValues(alpha: 0.8),
               ),
             ),
             const SizedBox(height: 16),
@@ -379,7 +376,7 @@ class _DesktopStoresPageState extends State<DesktopStoresPage> {
                     color: const Color(0xFF065F46),
                   ),
                 ),
-                backgroundColor: const Color(0xFF34D399).withOpacity(0.1),
+                backgroundColor: const Color(0xFF34D399).withValues(alpha: 0.1),
               );
             }).toList(),
           ),
@@ -407,7 +404,7 @@ class _DesktopStoresPageState extends State<DesktopStoresPage> {
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.1),
+                color: Colors.black.withValues(alpha: 0.1),
                 blurRadius: 20,
                 offset: const Offset(0, 10),
               ),
@@ -435,7 +432,7 @@ class _DesktopStoresPageState extends State<DesktopStoresPage> {
                 textAlign: TextAlign.center,
                 style: GoogleFonts.merriweather(
                   fontSize: 16,
-                  color: const Color(0xFF065F46).withOpacity(0.8),
+                  color: const Color(0xFF065F46).withValues(alpha: 0.8),
                 ),
               ),
               if (onTap != null) ...[
@@ -456,257 +453,9 @@ class _DesktopStoresPageState extends State<DesktopStoresPage> {
     ).animate().scale();
   }
 
-  Widget _buildContactSection(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: context.sized.width * 0.1,
-        vertical: 80,
-      ),
-      child: Column(
-        children: [
-          Text(
-            "Bize Ulaşın",
-            style: GoogleFonts.merriweather(
-              fontSize: 36,
-              fontWeight: FontWeight.bold,
-              color: const Color(0xFF065F46),
-            ),
-          ),
-          const SizedBox(height: 24),
-          Text(
-            "Sorularınız için bize ulaşabilirsiniz",
-            style: GoogleFonts.merriweather(
-              fontSize: 18,
-              color: const Color(0xFF065F46).withOpacity(0.8),
-            ),
-          ),
-          const SizedBox(height: 48),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildContactButton(
-                context,
-                Icons.phone_rounded,
-                "Bizi Arayın",
-                () => _launchURL('tel:+902121234567'),
-              ),
-              const SizedBox(width: 24),
-              _buildContactButton(
-                context,
-                Icons.mail_rounded,
-                "E-posta Gönderin",
-                () => _launchURL('mailto:info@tabiki.com'),
-              ),
-              const SizedBox(width: 24),
-              _buildContactButton(
-                context,
-                Icons.phone_android_rounded,
-                "WhatsApp",
-                () => _launchURL('https://wa.me/902121234567'),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildContactButton(
-    BuildContext context,
-    IconData icon,
-    String text,
-    VoidCallback onPressed,
-  ) {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: GestureDetector(
-        onTap: onPressed,
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-          decoration: BoxDecoration(
-            color: const Color(0xFF059669),
-            borderRadius: BorderRadius.circular(12),
-            boxShadow: [
-              BoxShadow(
-                color: const Color(0xFF059669).withOpacity(0.3),
-                blurRadius: 20,
-                offset: const Offset(0, 10),
-              ),
-            ],
-          ),
-          child: Row(
-            children: [
-              Icon(
-                icon,
-                color: Colors.white,
-                size: 24,
-              ),
-              const SizedBox(width: 12),
-              Text(
-                text,
-                style: GoogleFonts.merriweather(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    ).animate().scale();
-  }
-
   Future<void> _launchURL(String url) async {
     if (await canLaunchUrl(Uri.parse(url))) {
       await launchUrl(Uri.parse(url));
     }
-  }
-
-  Widget _build360Section(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: context.sized.width * 0.1,
-        vertical: 80,
-      ),
-      child: Column(
-        children: [
-          Text(
-            "Mağazamızı 360° Keşfedin",
-            style: GoogleFonts.merriweather(
-              fontSize: 36,
-              fontWeight: FontWeight.bold,
-              color: const Color(0xFF065F46),
-            ),
-          ),
-          const SizedBox(height: 24),
-          Text(
-            "Mağazamızı sanal olarak gezebilir, bölümleri inceleyebilirsiniz",
-            style: GoogleFonts.merriweather(
-              fontSize: 18,
-              color: const Color(0xFF065F46).withOpacity(0.8),
-            ),
-          ),
-          const SizedBox(height: 48),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: SizedBox(
-              height: 500,
-              child: Panorama(
-                longitude: _panoramaLongitude,
-                latitude: _panoramaLatitude,
-                onViewChanged: (longitude, latitude, _) {
-                  setState(() {
-                    _panoramaLongitude = longitude;
-                    _panoramaLatitude = latitude;
-                  });
-                },
-                child: Image.asset(
-                  _stores[_selectedStoreIndex]['panorama'],
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildReviewsSection(BuildContext context) {
-    final reviews = _stores[_selectedStoreIndex]['reviews'] as List;
-
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: context.sized.width * 0.1,
-        vertical: 80,
-      ),
-      color: Colors.white,
-      child: Column(
-        children: [
-          Text(
-            "Müşteri Yorumları",
-            style: GoogleFonts.merriweather(
-              fontSize: 36,
-              fontWeight: FontWeight.bold,
-              color: const Color(0xFF065F46),
-            ),
-          ),
-          const SizedBox(height: 48),
-          Row(
-            children: reviews.map<Widget>((review) {
-              return Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: _buildReviewCard(context, review),
-                ),
-              );
-            }).toList(),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildReviewCard(BuildContext context, Map<String, dynamic> review) {
-    return Container(
-      padding: const EdgeInsets.all(24),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 20,
-            offset: const Offset(0, 10),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                review['name'],
-                style: GoogleFonts.merriweather(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: const Color(0xFF065F46),
-                ),
-              ),
-              Row(
-                children: List.generate(
-                  5,
-                  (index) => Icon(
-                    index < review['rating'] ? Icons.star : Icons.star_border,
-                    color: const Color(0xFFFBBF24),
-                    size: 20,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          Text(
-            review['comment'],
-            style: GoogleFonts.merriweather(
-              fontSize: 16,
-              color: const Color(0xFF065F46).withOpacity(0.8),
-              height: 1.6,
-            ),
-          ),
-          const SizedBox(height: 16),
-          Text(
-            review['date'],
-            style: GoogleFonts.merriweather(
-              fontSize: 14,
-              color: const Color(0xFF065F46).withOpacity(0.6),
-            ),
-          ),
-        ],
-      ),
-    ).animate().scale();
   }
 }

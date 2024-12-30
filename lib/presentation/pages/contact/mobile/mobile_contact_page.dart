@@ -78,7 +78,7 @@ class _MobileContactPageState extends State<MobileContactPage> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
-              color: const Color(0xFF34D399).withOpacity(0.1),
+              color: const Color(0xFF34D399).withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(30),
             ),
             child: Text(
@@ -107,7 +107,7 @@ class _MobileContactPageState extends State<MobileContactPage> {
             textAlign: TextAlign.center,
             style: GoogleFonts.merriweather(
               fontSize: 16,
-              color: const Color(0xFF065F46).withOpacity(0.8),
+              color: const Color(0xFF065F46).withValues(alpha: 0.8),
               height: 1.6,
             ),
           ).animate().fadeIn(delay: 400.ms).slideX(),
@@ -165,7 +165,7 @@ class _MobileContactPageState extends State<MobileContactPage> {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 20,
             offset: const Offset(0, 10),
           ),
@@ -179,7 +179,7 @@ class _MobileContactPageState extends State<MobileContactPage> {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF34D399).withOpacity(0.1),
+                  color: const Color(0xFF34D399).withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Icon(
@@ -205,7 +205,7 @@ class _MobileContactPageState extends State<MobileContactPage> {
                       method['content'] as String,
                       style: GoogleFonts.merriweather(
                         fontSize: 14,
-                        color: const Color(0xFF065F46).withOpacity(0.8),
+                        color: const Color(0xFF065F46).withValues(alpha: 0.8),
                       ),
                     ),
                   ],
@@ -238,7 +238,7 @@ class _MobileContactPageState extends State<MobileContactPage> {
             "Formu doldurarak bize mesaj gönderebilirsiniz. En kısa sürede size dönüş yapacağız.",
             style: GoogleFonts.merriweather(
               fontSize: 16,
-              color: const Color(0xFF065F46).withOpacity(0.8),
+              color: const Color(0xFF065F46).withValues(alpha: 0.8),
               height: 1.6,
             ),
           ),
@@ -378,7 +378,7 @@ class _MobileContactPageState extends State<MobileContactPage> {
         labelText: label,
         prefixIcon: Icon(icon, color: const Color(0xFF059669)),
         labelStyle: GoogleFonts.merriweather(
-          color: const Color(0xFF065F46).withOpacity(0.8),
+          color: const Color(0xFF065F46).withValues(alpha: 0.8),
           fontSize: 16,
         ),
         border: OutlineInputBorder(
@@ -475,7 +475,7 @@ class _MobileContactPageState extends State<MobileContactPage> {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 20,
             offset: const Offset(0, 10),
           ),
@@ -508,7 +508,7 @@ class _MobileContactPageState extends State<MobileContactPage> {
                 answer,
                 style: GoogleFonts.merriweather(
                   fontSize: 14,
-                  color: const Color(0xFF065F46).withOpacity(0.8),
+                  color: const Color(0xFF065F46).withValues(alpha: 0.8),
                   height: 1.6,
                 ),
               ),
@@ -587,7 +587,7 @@ class _MobileContactPageState extends State<MobileContactPage> {
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF34D399).withOpacity(0.1),
+                  color: const Color(0xFF34D399).withValues(alpha: 0.1),
                   shape: BoxShape.circle,
                 ),
                 child: const Icon(
@@ -611,7 +611,7 @@ class _MobileContactPageState extends State<MobileContactPage> {
                 textAlign: TextAlign.center,
                 style: GoogleFonts.merriweather(
                   fontSize: 14,
-                  color: const Color(0xFF065F46).withOpacity(0.8),
+                  color: const Color(0xFF065F46).withValues(alpha: 0.8),
                 ),
               ),
               const SizedBox(height: 24),

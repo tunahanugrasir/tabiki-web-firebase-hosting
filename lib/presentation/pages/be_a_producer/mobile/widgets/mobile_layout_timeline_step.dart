@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:tabiki_web/presentation/pages/be_a_producer/desktop/constants/timeline_constants.dart';
 import 'package:tabiki_web/presentation/pages/be_a_producer/desktop/providers/timeline_step_view_model.dart';
 
-
 class MobileTimelineStep extends StatelessWidget {
   final IconData icon;
   final String title;
@@ -57,7 +56,7 @@ class MobileTimelineStep extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 10,
             offset: const Offset(0, 5),
           ),
@@ -81,7 +80,7 @@ class MobileTimelineStep extends StatelessWidget {
             description,
             style: GoogleFonts.merriweather(
               fontSize: 14,
-              color: TimelineColors.textColor.withOpacity(0.8),
+              color: TimelineColors.textColor.withValues(alpha: 0.8),
               height: 1.5,
             ),
           ),
@@ -102,7 +101,7 @@ class MobileTimelineStep extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: gradientColors[1].withOpacity(0.2),
+            color: gradientColors[1].withValues(alpha: 0.2),
             blurRadius: 10,
             offset: const Offset(0, 5),
           ),
@@ -139,7 +138,7 @@ class MobileTimelineStep extends StatelessWidget {
             borderRadius: BorderRadius.circular(TimelineConstants.iconBorderRadius),
             boxShadow: [
               BoxShadow(
-                color: gradientColors[1].withOpacity(viewModel.isHovered ? 0.3 : 0.2),
+                color: gradientColors[1].withValues(alpha: viewModel.isHovered ? 0.3 : 0.2),
                 blurRadius: viewModel.isHovered ? 20 : 15,
                 offset: const Offset(0, 8),
                 spreadRadius: viewModel.isHovered ? 2 : 0,
@@ -165,10 +164,10 @@ class MobileTimelineStep extends StatelessWidget {
         vertical: 8,
       ),
       decoration: BoxDecoration(
-        color: gradientColors[1].withOpacity(viewModel.isHovered ? 0.15 : 0.1),
+        color: gradientColors[1].withValues(alpha: viewModel.isHovered ? 0.15 : 0.1),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: gradientColors[1].withOpacity(viewModel.isHovered ? 0.3 : 0.2),
+          color: gradientColors[1].withValues(alpha: viewModel.isHovered ? 0.3 : 0.2),
           width: viewModel.isHovered ? 1.5 : 1,
         ),
       ),

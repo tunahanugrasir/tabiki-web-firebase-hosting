@@ -39,7 +39,7 @@ Widget dekstopBuildScreenshotsSection(BuildContext context) {
                           textAlign: TextAlign.center,
                           style: GoogleFonts.merriweather(
                             fontSize: 18,
-                            color: const Color(0xFF065F46).withOpacity(0.8),
+                            color: const Color(0xFF065F46).withValues(alpha: 0.8),
                           ),
                         ),
                       ],
@@ -65,7 +65,7 @@ Widget dekstopBuildScreenshotsSection(BuildContext context) {
                       )
                       .shimmer(
                         duration: 2000.ms,
-                        color: Colors.white.withOpacity(0.2),
+                        color: Colors.white.withValues(alpha: 0.2),
                       )
                       .animate()
                       .scale(

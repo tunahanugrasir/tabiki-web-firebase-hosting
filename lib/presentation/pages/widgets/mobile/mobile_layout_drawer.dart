@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
-import 'package:tabiki_web/presentation/pages/be_a_producer/responsive_be_a_producer_page.dart';
-import 'package:tabiki_web/presentation/pages/contact/responsive_contact_page.dart';
-import 'package:tabiki_web/presentation/pages/download_the_app/responsive_download_the_app_page.dart';
-import 'package:tabiki_web/presentation/pages/home/mobile/mobile_layout_home_page_view.dart';
-import 'package:tabiki_web/presentation/pages/israf/responsive_layout_israf_page.dart';
-import 'package:tabiki_web/presentation/pages/stores/responsive_stores_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MobileDrawer extends StatelessWidget {
@@ -28,7 +23,7 @@ class MobileDrawer extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
+                  color: Colors.black.withValues(alpha: 0.1),
                   blurRadius: 20,
                   offset: const Offset(0, 4),
                 ),
@@ -47,7 +42,7 @@ class MobileDrawer extends StatelessWidget {
                         vertical: 6,
                       ),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF00712D).withOpacity(0.1),
+                        color: const Color(0xFF00712D).withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: const Text(
@@ -145,7 +140,7 @@ class MobileDrawer extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             border: Border.all(
-              color: Colors.grey.withOpacity(0.2),
+              color: Colors.grey.withValues(alpha: 0.2),
             ),
             borderRadius: BorderRadius.circular(12),
           ),
@@ -261,79 +256,37 @@ class MobileDrawer extends StatelessWidget {
                   _buildDrawerItem(
                     icon: Icons.home_rounded,
                     title: 'Ana Sayfa',
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const MobileLayoutHomePageView(),
-                        ),
-                      );
-                    },
+                    onTap: () => context.go('/'),
                   ),
                   const SizedBox(height: 8),
                   _buildDrawerItem(
                     icon: Icons.store_rounded,
                     title: 'Üreticimiz Ol',
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ResponsiveBeAProducerPage(),
-                        ),
-                      );
-                    },
+                    onTap: () => context.go('/ureticimiz-ol'),
                   ),
                   const SizedBox(height: 8),
                   _buildDrawerItem(
                     icon: Icons.download_rounded,
                     title: 'Uygulamamızı İndir',
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ResponsiveDownloadTheAppPage(),
-                        ),
-                      );
-                    },
+                    onTap: () => context.go('/uygulamamizi-indir'),
                   ),
                   const SizedBox(height: 8),
                   _buildDrawerItem(
                     icon: Icons.eco_rounded,
                     title: 'İsrafı Önleyelim',
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ResponsiveLayoutIsrafPage(),
-                        ),
-                      );
-                    },
+                    onTap: () => context.go('/israfi-onleyelim'),
                   ),
                   const SizedBox(height: 8),
                   _buildDrawerItem(
                     icon: Icons.location_on_rounded,
                     title: 'Mağazalarımız',
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ResponsiveLayoutStoresPage(),
-                        ),
-                      );
-                    },
+                    onTap: () => context.go('/magazalarimiz'),
                   ),
                   const SizedBox(height: 8),
                   _buildDrawerItem(
                     icon: Icons.contact_support_rounded,
                     title: 'İletişim',
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ResponsiveContactPage(),
-                        ),
-                      );
-                    },
+                    onTap: () => context.go('/iletisim'),
                   ),
                 ],
               ),
@@ -388,7 +341,7 @@ class MobileDrawer extends StatelessWidget {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF336E7A).withOpacity(0.08),
+            color: const Color(0xFF336E7A).withValues(alpha: 0.08),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -398,7 +351,7 @@ class MobileDrawer extends StatelessWidget {
         leading: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: const Color(0xFF4CAF50).withOpacity(0.2),
+            color: const Color(0xFF4CAF50).withValues(alpha: 0.2),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Icon(
@@ -433,7 +386,7 @@ class MobileDrawer extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8),
       decoration: BoxDecoration(
-        color: const Color(0xFF336E7A).withOpacity(0.1),
+        color: const Color(0xFF336E7A).withValues(alpha: 0.1),
         shape: BoxShape.circle,
       ),
       child: IconButton(

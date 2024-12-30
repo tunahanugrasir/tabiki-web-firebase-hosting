@@ -92,7 +92,7 @@ class _TabletContactPageState extends State<TabletContactPage> {
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF34D399).withOpacity(0.1),
+                  color: const Color(0xFF34D399).withValues(alpha: 0.1),
                   shape: BoxShape.circle,
                 ),
                 child: const Icon(
@@ -116,7 +116,7 @@ class _TabletContactPageState extends State<TabletContactPage> {
                 textAlign: TextAlign.center,
                 style: GoogleFonts.merriweather(
                   fontSize: 16,
-                  color: const Color(0xFF065F46).withOpacity(0.8),
+                  color: const Color(0xFF065F46).withValues(alpha: 0.8),
                 ),
               ),
               const SizedBox(height: 24),

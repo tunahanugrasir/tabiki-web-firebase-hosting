@@ -22,7 +22,7 @@ Widget desktopBuildHeroSection(BuildContext context) {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF34D399).withOpacity(0.1),
+                    color: const Color(0xFF34D399).withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: Text(
@@ -49,7 +49,7 @@ Widget desktopBuildHeroSection(BuildContext context) {
                   "Yerel üreticilerden taze ve doğal ürünleri doğrudan kapınıza getiriyoruz. tabiki ile yerel lezzetlere bir tık uzaktasınız.",
                   style: GoogleFonts.merriweather(
                     fontSize: context.sized.width * 0.015,
-                    color: const Color(0xFF065F46).withOpacity(0.8),
+                    color: const Color(0xFF065F46).withValues(alpha: 0.8),
                     height: 1.6,
                   ),
                 ).animate().fadeIn(delay: 400.ms).slideX(),
@@ -113,7 +113,7 @@ Widget _buildStoreButton(
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withValues(alpha: 0.1),
               blurRadius: 20,
               offset: const Offset(0, 10),
             ),

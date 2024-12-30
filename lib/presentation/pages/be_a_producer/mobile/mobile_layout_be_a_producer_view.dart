@@ -93,7 +93,7 @@ class _MobileLayoutBeAProducerViewState extends State<MobileLayoutBeAProducerVie
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
-              color: const Color(0xFF34D399).withOpacity(0.1),
+              color: const Color(0xFF34D399).withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(30),
             ),
             child: Text(
@@ -122,7 +122,7 @@ class _MobileLayoutBeAProducerViewState extends State<MobileLayoutBeAProducerVie
             textAlign: TextAlign.center,
             style: GoogleFonts.merriweather(
               fontSize: 14,
-              color: const Color(0xFF065F46).withOpacity(0.8),
+              color: const Color(0xFF065F46).withValues(alpha: 0.8),
               height: 1.6,
             ),
           ),
@@ -238,7 +238,7 @@ class _MobileLayoutBeAProducerViewState extends State<MobileLayoutBeAProducerVie
             title,
             style: GoogleFonts.merriweather(
               fontSize: 16,
-              color: color.withOpacity(0.8),
+              color: color.withValues(alpha: 0.8),
               fontWeight: FontWeight.w500,
             ),
           ),

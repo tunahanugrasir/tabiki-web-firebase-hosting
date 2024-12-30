@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
-import 'package:tabiki_web/presentation/pages/be_a_producer/responsive_be_a_producer_page.dart';
-import 'package:tabiki_web/presentation/pages/contact/responsive_contact_page.dart';
-
-import 'package:tabiki_web/presentation/pages/download_the_app/responsive_download_the_app_page.dart';
-
-import 'package:tabiki_web/presentation/pages/israf/responsive_layout_israf_page.dart';
-import 'package:tabiki_web/presentation/pages/legal-notices/responsive_layout_legal_notices.dart';
-import 'package:tabiki_web/presentation/pages/stores/responsive_stores_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class TabletHomePageFooter extends StatelessWidget {
@@ -110,14 +103,7 @@ class TabletHomePageFooter extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ResponsiveLayoutLegalNotices(),
-                      ),
-                    );
-                  },
+                  onTap: () => context.go('/yasal-bildirimler'),
                   child: Text(
                     "Yasal Bildirimler",
                     style: GoogleFonts.merriweather(
@@ -136,14 +122,7 @@ class TabletHomePageFooter extends StatelessWidget {
                   ),
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ResponsiveLayoutLegalNotices(),
-                      ),
-                    );
-                  },
+                  onTap: () => context.go('/yasal-bildirimler'),
                   child: Text(
                     "Hizmet Şartları",
                     style: GoogleFonts.merriweather(
@@ -162,14 +141,7 @@ class TabletHomePageFooter extends StatelessWidget {
                   ),
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ResponsiveLayoutLegalNotices(),
-                      ),
-                    );
-                  },
+                  onTap: () => context.go('/yasal-bildirimler'),
                   child: Text(
                     "Gizlilik Politikası",
                     style: GoogleFonts.merriweather(
@@ -290,12 +262,7 @@ class TabletHomePageFooter extends StatelessWidget {
                 onTap: () {
                   switch (item) {
                     case "İletişim":
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ResponsiveContactPage(),
-                        ),
-                      );
+                      context.go('/iletisim');
                       break;
                     case "Instagram":
                       _launchURL('https://instagram.com/tabikiapp');
@@ -313,36 +280,16 @@ class TabletHomePageFooter extends StatelessWidget {
                       _launchURL('https://linkedin.com/company/tabikiapp');
                       break;
                     case "Üreticimiz Ol":
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ResponsiveBeAProducerPage(),
-                        ),
-                      );
+                      context.go('/ureticimiz-ol');
                       break;
                     case "Uygulamamızı İndir":
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ResponsiveDownloadTheAppPage(),
-                        ),
-                      );
+                      context.go('/uygulamamizi-indir');
                       break;
                     case "Mağazalarımız":
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ResponsiveLayoutStoresPage(),
-                        ),
-                      );
+                      context.go('/magazalarimiz');
                       break;
                     case "İsrafı Önleyelim":
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ResponsiveLayoutIsrafPage(),
-                        ),
-                      );
+                      context.go('/israfi-onleyelim');
                       break;
                   }
                 },

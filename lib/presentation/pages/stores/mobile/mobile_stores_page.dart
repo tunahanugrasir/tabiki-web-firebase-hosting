@@ -17,7 +17,7 @@ class _MobileStoresPageState extends State<MobileStoresPage> {
     {
       'name': 'tabiki Fethiye',
       'address': 'Cumhuriyet, 500. Sk., 48300 Fethiye/Muğla',
-       'phone': '+90 (530) 697 89 70',
+      'phone': '+90 (530) 697 89 70',
       'workingHours': '09:00 - 22:00',
       'image': 'assets/stores/tabiki-fethiye.webp',
       'location': 'https://maps.google.com/?q=36.623524, 29.114460',
@@ -26,7 +26,7 @@ class _MobileStoresPageState extends State<MobileStoresPage> {
     {
       'name': 'tabiki Bodrum',
       'address': 'Eskiçeşme, Neyzen Tevfik Cd. No:170, 48400 Bodrum/Muğla',
-       'phone': '+90 (530) 697 89 70',
+      'phone': '+90 (530) 697 89 70',
       'workingHours': '09:00 - 22:00',
       'image': 'assets/stores/tabiki-gocek.webp',
       'location': 'https://maps.google.com/?q=37.034710, 27.421923',
@@ -35,7 +35,7 @@ class _MobileStoresPageState extends State<MobileStoresPage> {
     {
       'name': 'tabiki Marmaris',
       'address': 'Kemeraltı, Atatürk Cd. No:26, 48700 Marmaris/Muğla',
-       'phone': '+90 (530) 697 89 70',
+      'phone': '+90 (530) 697 89 70',
       'workingHours': '09:00 - 22:00',
       'image': 'assets/stores/tabiki-marmaris.webp',
       'location': 'https://maps.google.com/?q=36.851947, 28.266181',
@@ -44,7 +44,7 @@ class _MobileStoresPageState extends State<MobileStoresPage> {
     {
       'name': 'tabiki Köyceğiz',
       'address': 'Ulucami, Cengiz Topel Cd. No:58/B, 48800 Köyceğiz/Muğla',
-       'phone': '+90 (530) 697 89 70',
+      'phone': '+90 (530) 697 89 70',
       'workingHours': '09:00 - 22:00',
       'image': 'assets/stores/tabiki-koycegız.webp',
       'location': 'https://maps.google.com/?q=36.958155, 28.682517',
@@ -90,7 +90,7 @@ class _MobileStoresPageState extends State<MobileStoresPage> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
-              color: const Color(0xFF34D399).withOpacity(0.1),
+              color: const Color(0xFF34D399).withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(30),
             ),
             child: Text(
@@ -119,7 +119,7 @@ class _MobileStoresPageState extends State<MobileStoresPage> {
             textAlign: TextAlign.center,
             style: GoogleFonts.merriweather(
               fontSize: 16,
-              color: const Color(0xFF065F46).withOpacity(0.8),
+              color: const Color(0xFF065F46).withValues(alpha: 0.8),
             ),
           ).animate().fadeIn(delay: 400.ms),
         ],
@@ -151,7 +151,7 @@ class _MobileStoresPageState extends State<MobileStoresPage> {
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withValues(alpha: 0.1),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
@@ -183,7 +183,7 @@ class _MobileStoresPageState extends State<MobileStoresPage> {
               store['address'],
               style: GoogleFonts.merriweather(
                 fontSize: 14,
-                color: isSelected ? Colors.white.withOpacity(0.8) : const Color(0xFF065F46).withOpacity(0.8),
+                color: isSelected ? Colors.white.withValues(alpha: 0.8) : const Color(0xFF065F46).withValues(alpha: 0.8),
               ),
             ),
             const SizedBox(height: 16),
@@ -281,7 +281,7 @@ class _MobileStoresPageState extends State<MobileStoresPage> {
                     color: const Color(0xFF065F46),
                   ),
                 ),
-                backgroundColor: const Color(0xFF34D399).withOpacity(0.1),
+                backgroundColor: const Color(0xFF34D399).withValues(alpha: 0.1),
               );
             }).toList(),
           ),

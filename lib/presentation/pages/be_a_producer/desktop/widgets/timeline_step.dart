@@ -81,7 +81,7 @@ class TimelineStep extends StatelessWidget {
             end: Alignment.bottomCenter,
             colors: [
               gradientColors[1],
-              gradientColors[1].withOpacity(viewModel.isHovered ? 0.3 : 0.1),
+              gradientColors[1].withValues(alpha: viewModel.isHovered ? 0.3 : 0.1),
             ],
           ),
         ),
@@ -109,7 +109,7 @@ class TimelineStep extends StatelessWidget {
             ),
             boxShadow: [
               BoxShadow(
-                color: gradientColors[1].withOpacity(TimelineConstants.defaultShadowOpacity),
+                color: gradientColors[1].withValues(alpha: TimelineConstants.defaultShadowOpacity),
                 blurRadius: viewModel.isHovered ? TimelineConstants.hoverBlur : TimelineConstants.defaultBlur,
                 offset: Offset(0, viewModel.isHovered ? 15 : 10),
                 spreadRadius: viewModel.isHovered ? TimelineConstants.hoverSpread : TimelineConstants.defaultSpread,
@@ -140,7 +140,7 @@ class TimelineStep extends StatelessWidget {
             borderRadius: BorderRadius.circular(TimelineConstants.cardBorderRadius),
             boxShadow: [
               BoxShadow(
-                color: viewModel.isHovered ? gradientColors[1].withOpacity(TimelineConstants.hoverShadowOpacity) : Colors.black.withOpacity(TimelineConstants.defaultShadowOpacity),
+                color: viewModel.isHovered ? gradientColors[1].withValues(alpha: TimelineConstants.hoverShadowOpacity) : Colors.black.withValues(alpha: TimelineConstants.defaultShadowOpacity),
                 blurRadius: viewModel.isHovered ? TimelineConstants.hoverBlur : TimelineConstants.defaultBlur,
                 offset: Offset(0, viewModel.isHovered ? 15 : 10),
                 spreadRadius: viewModel.isHovered ? TimelineConstants.hoverSpread : TimelineConstants.defaultSpread,
@@ -191,7 +191,7 @@ class TimelineStep extends StatelessWidget {
             borderRadius: BorderRadius.circular(TimelineConstants.iconBorderRadius),
             boxShadow: [
               BoxShadow(
-                color: gradientColors[1].withOpacity(viewModel.isHovered ? 0.3 : 0.2),
+                color: gradientColors[1].withValues(alpha: viewModel.isHovered ? 0.3 : 0.2),
                 blurRadius: viewModel.isHovered ? 20 : 15,
                 offset: const Offset(0, 8),
                 spreadRadius: viewModel.isHovered ? 2 : 0,
@@ -217,10 +217,10 @@ class TimelineStep extends StatelessWidget {
         vertical: 8,
       ),
       decoration: BoxDecoration(
-        color: gradientColors[1].withOpacity(viewModel.isHovered ? 0.15 : 0.1),
+        color: gradientColors[1].withValues(alpha: viewModel.isHovered ? 0.15 : 0.1),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: gradientColors[1].withOpacity(viewModel.isHovered ? 0.3 : 0.2),
+          color: gradientColors[1].withValues(alpha: viewModel.isHovered ? 0.3 : 0.2),
           width: viewModel.isHovered ? 1.5 : 1,
         ),
       ),
@@ -254,7 +254,7 @@ class TimelineStep extends StatelessWidget {
       curve: TimelineConstants.animationCurve,
       style: GoogleFonts.merriweather(
         fontSize: viewModel.isHovered ? TimelineConstants.hoverFontSize : TimelineConstants.defaultFontSize,
-        color: TimelineColors.textColor.withOpacity(viewModel.isHovered ? TimelineConstants.hoverOpacity : TimelineConstants.defaultOpacity),
+        color: TimelineColors.textColor.withValues(alpha: viewModel.isHovered ? TimelineConstants.hoverOpacity : TimelineConstants.defaultOpacity),
         height: 1.6,
       ),
       child: Text(description, style: GoogleFonts.merriweather(fontSize: context.sized.width * 0.01)),

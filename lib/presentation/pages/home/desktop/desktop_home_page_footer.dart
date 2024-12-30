@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
-import 'package:tabiki_web/presentation/pages/be_a_producer/responsive_be_a_producer_page.dart';
-import 'package:tabiki_web/presentation/pages/contact/responsive_contact_page.dart';
-import 'package:tabiki_web/presentation/pages/download_the_app/responsive_download_the_app_page.dart';
-import 'package:tabiki_web/presentation/pages/israf/responsive_layout_israf_page.dart';
-import 'package:tabiki_web/presentation/pages/stores/responsive_stores_page.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:tabiki_web/presentation/pages/legal-notices/responsive_layout_legal_notices.dart';
 
 class HomePageFooter extends StatelessWidget {
   final Color? backgroundColor;
@@ -182,9 +177,7 @@ class HomePageFooter extends StatelessWidget {
                           ),
                         ),
                         InkWell(
-                          onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveBeAProducerPage()));
-                          },
+                          onTap: () => context.go('/ureticimiz-ol'),
                           child: Text(
                             "Üreticimiz Ol",
                             style: GoogleFonts.merriweather(
@@ -195,9 +188,7 @@ class HomePageFooter extends StatelessWidget {
                           ),
                         ),
                         InkWell(
-                          onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveDownloadTheAppPage()));
-                          },
+                          onTap: () => context.go('/uygulamamizi-indir'),
                           child: Text(
                             "Uygulamamızı İndir",
                             style: GoogleFonts.merriweather(
@@ -208,9 +199,7 @@ class HomePageFooter extends StatelessWidget {
                           ),
                         ),
                         InkWell(
-                          onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveLayoutStoresPage()));
-                          },
+                          onTap: () => context.go('/magazalarimiz'),
                           child: Text(
                             "Mağazalarımız",
                             style: GoogleFonts.merriweather(
@@ -221,9 +210,7 @@ class HomePageFooter extends StatelessWidget {
                           ),
                         ),
                         InkWell(
-                          onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveLayoutIsrafPage()));
-                          },
+                          onTap: () => context.go('/israfi-onleyelim'),
                           child: Text(
                             "İsrafı Önleyelim",
                             style: GoogleFonts.merriweather(
@@ -234,9 +221,7 @@ class HomePageFooter extends StatelessWidget {
                           ),
                         ),
                         InkWell(
-                          onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const ResponsiveContactPage()));
-                          },
+                          onTap: () => context.go('/iletisim'),
                           child: Text(
                             "İletişim",
                             style: GoogleFonts.merriweather(
@@ -315,14 +300,7 @@ class HomePageFooter extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ResponsiveLayoutLegalNotices(),
-                      ),
-                    );
-                  },
+                  onTap: () => context.go('/yasal-bildirimler'),
                   child: Text(
                     "Yasal Bildirimler",
                     style: GoogleFonts.merriweather(
@@ -341,14 +319,7 @@ class HomePageFooter extends StatelessWidget {
                   ),
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ResponsiveLayoutLegalNotices(),
-                      ),
-                    );
-                  },
+                  onTap: () => context.go('/yasal-bildirimler'),
                   child: Text(
                     "Hizmet Şartları",
                     style: GoogleFonts.merriweather(
@@ -367,14 +338,7 @@ class HomePageFooter extends StatelessWidget {
                   ),
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ResponsiveLayoutLegalNotices(),
-                      ),
-                    );
-                  },
+                  onTap: () => context.go('/yasal-bildirimler'),
                   child: Text(
                     "Gizlilik Politikası",
                     style: GoogleFonts.merriweather(

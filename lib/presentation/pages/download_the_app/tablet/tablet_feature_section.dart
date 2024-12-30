@@ -27,7 +27,7 @@ Widget tabletBuildFeatureSection(BuildContext context) {
               textAlign: TextAlign.center,
               style: GoogleFonts.merriweather(
                 fontSize: 24,
-                color: const Color(0xFF065F46).withOpacity(0.8),
+                color: const Color(0xFF065F46).withValues(alpha: 0.8),
                 height: 1.5,
               ),
             ).animate().fadeIn(delay: 200.ms),
@@ -121,7 +121,7 @@ Widget tabletBuildFeatureSection(BuildContext context) {
                     borderRadius: BorderRadius.circular(32),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFF059669).withOpacity(0.2),
+                        color: const Color(0xFF059669).withValues(alpha: 0.2),
                         blurRadius: 16,
                         offset: const Offset(0, 8),
                       ),
@@ -149,7 +149,7 @@ Widget tabletBuildFeatureSection(BuildContext context) {
                 ),
               ).animate().fadeIn(delay: 800.ms).shimmer(
                     duration: 2000.ms,
-                    color: Colors.white.withOpacity(0.2),
+                    color: Colors.white.withValues(alpha: 0.2),
                   ),
             ],
           ),
@@ -174,7 +174,7 @@ Widget _buildFeatureDetailCard(
       borderRadius: BorderRadius.circular(24),
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.05),
+          color: Colors.black.withValues(alpha: 0.05),
           blurRadius: 20,
           offset: const Offset(0, 10),
           spreadRadius: 0,
@@ -187,7 +187,7 @@ Widget _buildFeatureDetailCard(
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: const Color(0xFF34D399).withOpacity(0.1),
+            color: const Color(0xFF34D399).withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Icon(
@@ -211,7 +211,7 @@ Widget _buildFeatureDetailCard(
             description,
             style: GoogleFonts.merriweather(
               fontSize: 16,
-              color: const Color(0xFF065F46).withOpacity(0.8),
+              color: const Color(0xFF065F46).withValues(alpha: 0.8),
               height: 1.6,
             ),
           ),

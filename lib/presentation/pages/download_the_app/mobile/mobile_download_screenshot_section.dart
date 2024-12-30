@@ -42,7 +42,7 @@ Widget mobileDownloadScreenshotSection(BuildContext context) {
                     style: GoogleFonts.inter(
                       fontSize: context.sized.width * 0.04,
                       height: 1.5,
-                      color: const Color(0xFF065F46).withOpacity(0.8),
+                      color: const Color(0xFF065F46).withValues(alpha: 0.8),
                     ),
                   ),
                 ],

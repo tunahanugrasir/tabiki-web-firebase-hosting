@@ -213,7 +213,7 @@ class _TabletLayoutBeAProducerViewState extends State<TabletLayoutBeAProducerVie
                 color: TimelineColors.textColor,
                 shadows: [
                   Shadow(
-                    color: Colors.black.withOpacity(0.1),
+                    color: Colors.black.withValues(alpha: 0.1),
                     offset: const Offset(0, 2),
                     blurRadius: 4,
                   ),
@@ -302,7 +302,7 @@ class _TabletLayoutBeAProducerViewState extends State<TabletLayoutBeAProducerVie
                     height: context.sized.width * 0.15,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: const Color(0xFF34D399).withOpacity(0.1),
+                      color: const Color(0xFF34D399).withValues(alpha: 0.1),
                     ),
                   ),
                 ),
@@ -314,7 +314,7 @@ class _TabletLayoutBeAProducerViewState extends State<TabletLayoutBeAProducerVie
                     height: context.sized.width * 0.20,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: const Color(0xFF34D399).withOpacity(0.1),
+                      color: const Color(0xFF34D399).withValues(alpha: 0.1),
                     ),
                   ),
                 ),
@@ -326,7 +326,7 @@ class _TabletLayoutBeAProducerViewState extends State<TabletLayoutBeAProducerVie
                     height: context.sized.width * 0.1,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: const Color(0xFF34D399).withOpacity(0.1),
+                      color: const Color(0xFF34D399).withValues(alpha: 0.1),
                     ),
                   ),
                 ),
@@ -351,7 +351,7 @@ class _TabletLayoutBeAProducerViewState extends State<TabletLayoutBeAProducerVie
                                   Container(
                                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                                     decoration: BoxDecoration(
-                                      color: const Color(0xFF34D399).withOpacity(0.1),
+                                      color: const Color(0xFF34D399).withValues(alpha: 0.1),
                                       borderRadius: BorderRadius.circular(30),
                                     ),
                                     child: Text(
@@ -378,7 +378,7 @@ class _TabletLayoutBeAProducerViewState extends State<TabletLayoutBeAProducerVie
                                     "Birlikte büyüyeceğimiz, değer üreteceğimiz ve kazanacağımız büyük ailemize siz de katılın. Ürünlerinizi değerinde satmanın mutluluğunu yaşayın.",
                                     style: GoogleFonts.merriweather(
                                       fontSize: context.sized.width * 0.013,
-                                      color: const Color(0xFF065F46).withOpacity(0.8),
+                                      color: const Color(0xFF065F46).withValues(alpha: 0.8),
                                       height: 1.6,
                                     ),
                                   ),
@@ -404,7 +404,7 @@ class _TabletLayoutBeAProducerViewState extends State<TabletLayoutBeAProducerVie
                                             ),
                                             boxShadow: [
                                               BoxShadow(
-                                                color: const Color(0xFF059669).withOpacity(0.3),
+                                                color: const Color(0xFF059669).withValues(alpha: 0.3),
                                                 blurRadius: 20,
                                                 offset: const Offset(0, 10),
                                               ),
@@ -481,7 +481,7 @@ class _TabletLayoutBeAProducerViewState extends State<TabletLayoutBeAProducerVie
                             Container(
                               width: 2,
                               height: 100,
-                              color: const Color(0xFF059669).withOpacity(0.2),
+                              color: const Color(0xFF059669).withValues(alpha: 0.2),
                             ),
                             _buildStatistic(
                               context,
@@ -493,7 +493,7 @@ class _TabletLayoutBeAProducerViewState extends State<TabletLayoutBeAProducerVie
                             Container(
                               width: 2,
                               height: 100,
-                              color: const Color(0xFF059669).withOpacity(0.2),
+                              color: const Color(0xFF059669).withValues(alpha: 0.2),
                             ),
                             _buildStatistic(
                               context,
@@ -513,7 +513,7 @@ class _TabletLayoutBeAProducerViewState extends State<TabletLayoutBeAProducerVie
           ),
           Expanded(
               child: TabletHomePageFooter(
-            backgroundColor: const Color(0xFF34D399).withOpacity(0.1),
+            backgroundColor: const Color(0xFF34D399).withValues(alpha: 0.1),
             gradient: const LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -586,7 +586,7 @@ class _TabletLayoutBeAProducerViewState extends State<TabletLayoutBeAProducerVie
             title,
             style: GoogleFonts.merriweather(
               fontSize: context.sized.width * 0.012,
-              color: color.withOpacity(0.8),
+              color: color.withValues(alpha: 0.8),
               fontWeight: FontWeight.w500,
             ),
           ),

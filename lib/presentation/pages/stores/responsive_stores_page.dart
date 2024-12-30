@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:tabiki_web/core/widgets/responsive_builder.dart';
 import 'package:tabiki_web/presentation/pages/stores/desktop/desktop_stores_page.dart';
