@@ -25,7 +25,9 @@ class _ProducerRedirectPageState extends State<ProducerRedirectPage> {
   @override
   void initState() {
     super.initState();
-    _handleRedirect();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _handleRedirect();
+    });
   }
 
   Future<void> _handleRedirect() async {
@@ -39,28 +41,33 @@ class _ProducerRedirectPageState extends State<ProducerRedirectPage> {
 
       try {
         if (userAgent.contains('iphone') || userAgent.contains('ipad')) {
-          // iOS için Universal Link
-          final universalLink = Uri.parse('$webUrl/producer/${widget.producerId}');
-          // Eğer Universal Link çalışmazsa, Custom URL Scheme'e geri dön
           final deepLink = Uri.parse('tabiki://producer/${widget.producerId}');
-
-          await _tryLaunchUniversalLink(universalLink, deepLink, appStoreUrl);
+          await _tryLaunchDeepLink(deepLink, appStoreUrl);
         } else if (userAgent.contains('android')) {
-          // Android için Intent URL kullan
-          final intentUrl = 'intent://producer/${widget.producerId}#Intent;'
-              'scheme=tabiki;'
-              'package=co.tabiki.app;'
-              'S.browser_fallback_url=${Uri.encodeComponent(playStoreUrl)};'
-              'end';
+          // Chrome için özel yönlendirme
+          html.window.location.href = 'tabiki://producer/${widget.producerId}';
 
-          await _launchAndroidIntent(intentUrl, playStoreUrl);
+          // 2 saniye sonra Play Store'a yönlendir
+          await Future.delayed(const Duration(seconds: 2));
+          if (mounted) {
+            await launchUrl(
+              Uri.parse(playStoreUrl),
+              mode: LaunchMode.externalApplication,
+            );
+          }
         } else {
-          await launchUrl(Uri.parse(playStoreUrl));
+          await launchUrl(
+            Uri.parse(playStoreUrl),
+            mode: LaunchMode.externalApplication,
+          );
         }
       } catch (e) {
         if (mounted) {
           final storeUrl = (userAgent.contains('iphone') || userAgent.contains('ipad')) ? appStoreUrl : playStoreUrl;
-          await launchUrl(Uri.parse(storeUrl));
+          await launchUrl(
+            Uri.parse(storeUrl),
+            mode: LaunchMode.externalApplication,
+          );
         }
       } finally {
         if (mounted) {
@@ -70,53 +77,25 @@ class _ProducerRedirectPageState extends State<ProducerRedirectPage> {
     }
   }
 
-  Future<void> _launchAndroidIntent(String intentUrl, String fallbackUrl) async {
+  Future<void> _tryLaunchDeepLink(Uri deepLink, String storeUrl) async {
     try {
-      // Intent URL'i aç
-      final uri = Uri.parse(intentUrl);
       final launched = await launchUrl(
-        uri,
-        mode: LaunchMode.externalApplication,
-      );
-
-      // Eğer açılamazsa Play Store'a yönlendir
-      if (!launched && mounted) {
-        await launchUrl(Uri.parse(fallbackUrl));
-      }
-    } catch (e) {
-      if (mounted) {
-        await launchUrl(Uri.parse(fallbackUrl));
-      }
-    }
-  }
-
-  Future<void> _tryLaunchUniversalLink(Uri universalLink, Uri deepLink, String storeUrl) async {
-    try {
-      // Önce Universal Link'i dene
-      final launched = await launchUrl(
-        universalLink,
+        deepLink,
         mode: LaunchMode.externalApplication,
       );
 
       if (!launched && mounted) {
-        // Universal Link çalışmadıysa, deep link'i dene
-        final canLaunchDeepLink = await canLaunchUrl(deepLink);
-        if (canLaunchDeepLink) {
-          final deepLinkLaunched = await launchUrl(
-            deepLink,
-            mode: LaunchMode.externalApplication,
-          );
-
-          if (!deepLinkLaunched && mounted) {
-            await launchUrl(Uri.parse(storeUrl));
-          }
-        } else if (mounted) {
-          await launchUrl(Uri.parse(storeUrl));
-        }
+        await launchUrl(
+          Uri.parse(storeUrl),
+          mode: LaunchMode.externalApplication,
+        );
       }
     } catch (e) {
       if (mounted) {
-        await launchUrl(Uri.parse(storeUrl));
+        await launchUrl(
+          Uri.parse(storeUrl),
+          mode: LaunchMode.externalApplication,
+        );
       }
     }
   }
@@ -167,12 +146,18 @@ class _ProducerRedirectPageState extends State<ProducerRedirectPage> {
                 runSpacing: 16,
                 children: [
                   ElevatedButton.icon(
-                    onPressed: () => launchUrl(Uri.parse(playStoreUrl)),
+                    onPressed: () => launchUrl(
+                      Uri.parse(playStoreUrl),
+                      mode: LaunchMode.externalApplication,
+                    ),
                     icon: const Icon(Icons.android),
                     label: const Text('Google Play\'den İndir'),
                   ),
                   ElevatedButton.icon(
-                    onPressed: () => launchUrl(Uri.parse(appStoreUrl)),
+                    onPressed: () => launchUrl(
+                      Uri.parse(appStoreUrl),
+                      mode: LaunchMode.externalApplication,
+                    ),
                     icon: const Icon(Icons.apple),
                     label: const Text('App Store\'dan İndir'),
                   ),
