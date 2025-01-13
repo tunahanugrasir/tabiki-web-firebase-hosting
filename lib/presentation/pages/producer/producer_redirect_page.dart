@@ -20,6 +20,7 @@ class _ProducerRedirectPageState extends State<ProducerRedirectPage> {
   static const String appStoreUrl = 'https://apps.apple.com/app/tabiki/id123456789';
   static const String webUrl = 'https://tabiki.co';
   bool _isRedirecting = false;
+  bool _hasAttemptedRedirect = false;
 
   @override
   void initState() {
@@ -28,8 +29,11 @@ class _ProducerRedirectPageState extends State<ProducerRedirectPage> {
   }
 
   Future<void> _handleRedirect() async {
-    if (kIsWeb) {
-      setState(() => _isRedirecting = true);
+    if (kIsWeb && !_hasAttemptedRedirect) {
+      setState(() {
+        _isRedirecting = true;
+        _hasAttemptedRedirect = true;
+      });
 
       final userAgent = html.window.navigator.userAgent.toLowerCase();
 
@@ -42,12 +46,14 @@ class _ProducerRedirectPageState extends State<ProducerRedirectPage> {
 
           await _tryLaunchUniversalLink(universalLink, deepLink, appStoreUrl);
         } else if (userAgent.contains('android')) {
-          // Android için App Link
-          final appLink = Uri.parse('$webUrl/producer/${widget.producerId}');
-          // Eğer App Link çalışmazsa, Custom URL Scheme'e geri dön
-          final deepLink = Uri.parse('tabiki://producer/${widget.producerId}');
+          // Android için Intent URL kullan
+          final intentUrl = 'intent://producer/${widget.producerId}#Intent;'
+              'scheme=tabiki;'
+              'package=co.tabiki.app;'
+              'S.browser_fallback_url=${Uri.encodeComponent(playStoreUrl)};'
+              'end';
 
-          await _tryLaunchAppLink(appLink, deepLink, playStoreUrl);
+          await _launchAndroidIntent(intentUrl, playStoreUrl);
         } else {
           await launchUrl(Uri.parse(playStoreUrl));
         }
@@ -56,6 +62,30 @@ class _ProducerRedirectPageState extends State<ProducerRedirectPage> {
           final storeUrl = (userAgent.contains('iphone') || userAgent.contains('ipad')) ? appStoreUrl : playStoreUrl;
           await launchUrl(Uri.parse(storeUrl));
         }
+      } finally {
+        if (mounted) {
+          setState(() => _isRedirecting = false);
+        }
+      }
+    }
+  }
+
+  Future<void> _launchAndroidIntent(String intentUrl, String fallbackUrl) async {
+    try {
+      // Intent URL'i aç
+      final uri = Uri.parse(intentUrl);
+      final launched = await launchUrl(
+        uri,
+        mode: LaunchMode.externalApplication,
+      );
+
+      // Eğer açılamazsa Play Store'a yönlendir
+      if (!launched && mounted) {
+        await launchUrl(Uri.parse(fallbackUrl));
+      }
+    } catch (e) {
+      if (mounted) {
+        await launchUrl(Uri.parse(fallbackUrl));
       }
     }
   }
@@ -68,7 +98,7 @@ class _ProducerRedirectPageState extends State<ProducerRedirectPage> {
         mode: LaunchMode.externalApplication,
       );
 
-      if (!launched) {
+      if (!launched && mounted) {
         // Universal Link çalışmadıysa, deep link'i dene
         final canLaunchDeepLink = await canLaunchUrl(deepLink);
         if (canLaunchDeepLink) {
@@ -78,44 +108,9 @@ class _ProducerRedirectPageState extends State<ProducerRedirectPage> {
           );
 
           if (!deepLinkLaunched && mounted) {
-            // Hiçbiri çalışmadıysa store'a yönlendir
             await launchUrl(Uri.parse(storeUrl));
           }
         } else if (mounted) {
-          // Deep link de desteklenmiyorsa store'a yönlendir
-          await launchUrl(Uri.parse(storeUrl));
-        }
-      }
-    } catch (e) {
-      if (mounted) {
-        await launchUrl(Uri.parse(storeUrl));
-      }
-    }
-  }
-
-  Future<void> _tryLaunchAppLink(Uri appLink, Uri deepLink, String storeUrl) async {
-    try {
-      // Önce App Link'i dene
-      final launched = await launchUrl(
-        appLink,
-        mode: LaunchMode.externalApplication,
-      );
-
-      if (!launched) {
-        // App Link çalışmadıysa, deep link'i dene
-        final canLaunchDeepLink = await canLaunchUrl(deepLink);
-        if (canLaunchDeepLink) {
-          final deepLinkLaunched = await launchUrl(
-            deepLink,
-            mode: LaunchMode.externalApplication,
-          );
-
-          if (!deepLinkLaunched && mounted) {
-            // Hiçbiri çalışmadıysa store'a yönlendir
-            await launchUrl(Uri.parse(storeUrl));
-          }
-        } else if (mounted) {
-          // Deep link de desteklenmiyorsa store'a yönlendir
           await launchUrl(Uri.parse(storeUrl));
         }
       }
