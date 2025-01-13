@@ -18,6 +18,7 @@ class ProducerRedirectPage extends StatefulWidget {
 class _ProducerRedirectPageState extends State<ProducerRedirectPage> {
   static const String playStoreUrl = 'https://play.google.com/store/apps/details?id=co.tabiki.app';
   static const String appStoreUrl = 'https://apps.apple.com/app/tabiki/id123456789';
+  static const String webUrl = 'https://tabiki.co';
   bool _isRedirecting = false;
 
   @override
@@ -28,40 +29,101 @@ class _ProducerRedirectPageState extends State<ProducerRedirectPage> {
 
   Future<void> _handleRedirect() async {
     if (kIsWeb) {
-      final deepLink = 'tabiki://producer/${widget.producerId}';
-      final userAgent = html.window.navigator.userAgent.toLowerCase();
-
       setState(() => _isRedirecting = true);
 
-      if (userAgent.contains('iphone') || userAgent.contains('ipad')) {
-        _redirectToStore(deepLink, appStoreUrl);
-      } else if (userAgent.contains('android')) {
-        _redirectToStore(deepLink, playStoreUrl);
-      } else {
-        launchUrl(Uri.parse(playStoreUrl));
+      final userAgent = html.window.navigator.userAgent.toLowerCase();
+
+      try {
+        if (userAgent.contains('iphone') || userAgent.contains('ipad')) {
+          // iOS için Universal Link
+          final universalLink = Uri.parse('$webUrl/producer/${widget.producerId}');
+          // Eğer Universal Link çalışmazsa, Custom URL Scheme'e geri dön
+          final deepLink = Uri.parse('tabiki://producer/${widget.producerId}');
+
+          await _tryLaunchUniversalLink(universalLink, deepLink, appStoreUrl);
+        } else if (userAgent.contains('android')) {
+          // Android için App Link
+          final appLink = Uri.parse('$webUrl/producer/${widget.producerId}');
+          // Eğer App Link çalışmazsa, Custom URL Scheme'e geri dön
+          final deepLink = Uri.parse('tabiki://producer/${widget.producerId}');
+
+          await _tryLaunchAppLink(appLink, deepLink, playStoreUrl);
+        } else {
+          await launchUrl(Uri.parse(playStoreUrl));
+        }
+      } catch (e) {
+        if (mounted) {
+          final storeUrl = (userAgent.contains('iphone') || userAgent.contains('ipad')) ? appStoreUrl : playStoreUrl;
+          await launchUrl(Uri.parse(storeUrl));
+        }
       }
     }
   }
 
-  void _redirectToStore(String deepLink, String storeUrl) {
-    // Önce deep link'i dene
-    final startTime = DateTime.now();
-    bool hasRedirected = false;
+  Future<void> _tryLaunchUniversalLink(Uri universalLink, Uri deepLink, String storeUrl) async {
+    try {
+      // Önce Universal Link'i dene
+      final launched = await launchUrl(
+        universalLink,
+        mode: LaunchMode.externalApplication,
+      );
 
-    // Deep link'i aç
-    html.window.location.href = deepLink;
+      if (!launched) {
+        // Universal Link çalışmadıysa, deep link'i dene
+        final canLaunchDeepLink = await canLaunchUrl(deepLink);
+        if (canLaunchDeepLink) {
+          final deepLinkLaunched = await launchUrl(
+            deepLink,
+            mode: LaunchMode.externalApplication,
+          );
 
-    // 2 saniye bekle ve kontrol et
-    Future.delayed(const Duration(milliseconds: 2000), () {
-      if (!hasRedirected) {
-        // Eğer sayfa hala açıksa (uygulama açılmadıysa), mağazaya yönlendir
-        final currentTime = DateTime.now();
-        if (currentTime.difference(startTime).inMilliseconds >= 1900) {
-          hasRedirected = true;
-          html.window.location.href = storeUrl;
+          if (!deepLinkLaunched && mounted) {
+            // Hiçbiri çalışmadıysa store'a yönlendir
+            await launchUrl(Uri.parse(storeUrl));
+          }
+        } else if (mounted) {
+          // Deep link de desteklenmiyorsa store'a yönlendir
+          await launchUrl(Uri.parse(storeUrl));
         }
       }
-    });
+    } catch (e) {
+      if (mounted) {
+        await launchUrl(Uri.parse(storeUrl));
+      }
+    }
+  }
+
+  Future<void> _tryLaunchAppLink(Uri appLink, Uri deepLink, String storeUrl) async {
+    try {
+      // Önce App Link'i dene
+      final launched = await launchUrl(
+        appLink,
+        mode: LaunchMode.externalApplication,
+      );
+
+      if (!launched) {
+        // App Link çalışmadıysa, deep link'i dene
+        final canLaunchDeepLink = await canLaunchUrl(deepLink);
+        if (canLaunchDeepLink) {
+          final deepLinkLaunched = await launchUrl(
+            deepLink,
+            mode: LaunchMode.externalApplication,
+          );
+
+          if (!deepLinkLaunched && mounted) {
+            // Hiçbiri çalışmadıysa store'a yönlendir
+            await launchUrl(Uri.parse(storeUrl));
+          }
+        } else if (mounted) {
+          // Deep link de desteklenmiyorsa store'a yönlendir
+          await launchUrl(Uri.parse(storeUrl));
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        await launchUrl(Uri.parse(storeUrl));
+      }
+    }
   }
 
   @override
