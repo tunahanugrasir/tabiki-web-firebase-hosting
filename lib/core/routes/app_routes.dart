@@ -6,16 +6,23 @@ import 'package:tabiki_web/presentation/pages/download_the_app/responsive_downlo
 import 'package:tabiki_web/presentation/pages/home/responsive_home_page.dart';
 import 'package:tabiki_web/presentation/pages/israf/responsive_layout_israf_page.dart';
 import 'package:tabiki_web/presentation/pages/legal-notices/responsive_layout_legal_notices.dart';
+import 'package:tabiki_web/presentation/pages/producer/producer_redirect_page.dart';
 import 'package:tabiki_web/presentation/pages/stores/responsive_stores_page.dart';
 
 final GoRouter appRouter = GoRouter(
   initialLocation: '/',
-  
   routes: [
     GoRoute(
       path: '/',
       name: 'home',
       builder: (context, state) => const ResponsiveHomePage(),
+    ),
+    GoRoute(
+      path: '/producer/:id',
+      name: 'producer',
+      builder: (context, state) => ProducerRedirectPage(
+        producerId: state.pathParameters['id']!,
+      ),
     ),
     GoRoute(
       path: '/ureticimiz-ol',
