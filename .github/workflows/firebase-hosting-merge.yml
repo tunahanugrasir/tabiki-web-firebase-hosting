@@ -2,7 +2,7 @@
 # https://github.com/firebase/firebase-tools
 
 name: Deploy to Firebase Hosting on merge
-on:
+'on':
   push:
     branches:
       - main
@@ -10,26 +10,55 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
       
-      # Flutter kurulumu - versiyonu belirtelim
+      # Flutter kurulumu
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.27.1'  # En son stabil versiyon
+          flutter-version: '3.16.0'
           channel: 'stable'
       
       # Flutter bağımlılıklarını yükleme
       - name: Install Dependencies
         run: flutter pub get
-        
+      
       # Web build
       - name: Build Web
         run: flutter build web
         
+      # Deep linking dosyalarını oluşturma
+      - name: Create Deep Linking Files
+        run: |
+          mkdir -p build/web/.well-known
+          cat > build/web/.well-known/apple-app-site-association << 'EOL'
+          {
+            "applinks": {
+              "apps": [],
+              "details": [
+                {
+                  "appID": "TEAM_ID.co.tabiki.app",
+                  "paths": ["/producer/*"]
+                }
+              ]
+            }
+          }
+          EOL
+          
+          cat > build/web/.well-known/assetlinks.json << 'EOL'
+          [{
+            "relation": ["delegate_permission/common.handle_all_urls"],
+            "target": {
+              "namespace": "android_app",
+              "package_name": "co.tabiki.app",
+              "sha256_cert_fingerprints": ["E7:07:64:25:26:D5:9A:E2:69:31:EF:FA:EC:A7:BE:D2:7D:8E:7F:EB:77:CA:A5:DC:F8:40:AC:F5:01:40:EE:D5"]
+            }
+          }]
+          EOL
+
       # Firebase'e deploy
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TABIKI_WEB }}
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_TABIKI_WEB }}'
           channelId: live
           projectId: tabiki-web
