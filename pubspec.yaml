@@ -37,7 +37,7 @@ dependencies:
   flutter_animate: ^4.5.2
   font_awesome_flutter: ^10.8.0
   google_fonts: ^6.2.1
-  kartal: ^4.1.0
+  kartal: ^3.5.0
   lottie: ^2.7.0
   marquee: ^2.2.3
   panorama: ^0.4.1
