@@ -39,7 +39,7 @@ dependencies:
   google_fonts: ^6.2.1
   kartal: ^4.1.0
   lottie: ^2.7.0
-  marquee: ^2.3.0
+  marquee: ^2.2.3
   panorama: ^0.4.1
   provider: ^6.1.2
   qr_flutter: ^4.1.0
