@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
+import 'package:tabiki_web/presentation/pages/download_the_app/desktop/desktop_hero_section.dart';
 import 'package:tabiki_web/presentation/pages/widgets/mobile/social_media_links.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -51,9 +52,11 @@ class MobileFooter extends StatelessWidget {
               alignment: WrapAlignment.center,
               children: [
                 InkWell(
-                  onTap: () => _launchURL('https://apps.apple.com/your-app-link'),
+                  onTap: () =>
+                      _launchURL(appStoreUrl),
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
                       color: Colors.black,
                       borderRadius: BorderRadius.circular(8),
@@ -89,9 +92,11 @@ class MobileFooter extends StatelessWidget {
                   ),
                 ),
                 InkWell(
-                  onTap: () => _launchURL('https://play.google.com/store/apps/your-app-link'),
+                  onTap: () => _launchURL(
+                     playStoreUrl),
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
                       color: Colors.black,
                       borderRadius: BorderRadius.circular(8),
@@ -160,7 +165,7 @@ class MobileFooter extends StatelessWidget {
                     ),
                   ),
                   InkWell(
-                  onTap: () => context.go('/yasal-bildirimler'),
+                    onTap: () => context.go('/yasal-bildirimler'),
                     child: Text(
                       "Hizmet Şartları",
                       style: GoogleFonts.merriweather(
@@ -179,7 +184,7 @@ class MobileFooter extends StatelessWidget {
                     ),
                   ),
                   InkWell(
-                     onTap: () => context.go('/yasal-bildirimler'),
+                    onTap: () => context.go('/yasal-bildirimler'),
                     child: Text(
                       "Gizlilik Politikası",
                       style: GoogleFonts.merriweather(

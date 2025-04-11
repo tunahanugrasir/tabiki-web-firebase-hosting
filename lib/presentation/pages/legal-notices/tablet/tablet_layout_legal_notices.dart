@@ -10,7 +10,8 @@ class TabletLayoutLegalNotices extends StatefulWidget {
   const TabletLayoutLegalNotices({super.key});
 
   @override
-  State<TabletLayoutLegalNotices> createState() => _TabletLayoutLegalNoticesState();
+  State<TabletLayoutLegalNotices> createState() =>
+      _TabletLayoutLegalNoticesState();
 }
 
 class _TabletLayoutLegalNoticesState extends State<TabletLayoutLegalNotices> {
@@ -43,7 +44,9 @@ class _TabletLayoutLegalNoticesState extends State<TabletLayoutLegalNotices> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          if (sectionData != null) ...sectionData.notices.map((notice) => _buildSection(notice)),
+                          if (sectionData != null)
+                            ...sectionData.notices
+                                .map((notice) => _buildSection(notice)),
                         ],
                       ),
                     ),

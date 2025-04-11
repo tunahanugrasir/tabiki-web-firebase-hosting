@@ -3,9 +3,19 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tabiki_web/presentation/pages/download_the_app/desktop/desktop_hero_section.dart'
+    show appStoreUrl, playStoreUrl;
+import 'package:url_launcher/url_launcher.dart';
 
 class MobileDrawer extends StatelessWidget {
   const MobileDrawer({super.key});
+// URL açma işlemi için yardımcı fonksiyon
+  Future<void> _launchUrl(String urlString) async {
+    final Uri url = Uri.parse(urlString);
+    if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+      debugPrint('Could not launch $urlString');
+    }
+  }
 
   static void showDownloadDialog(BuildContext context) {
     showDialog(
@@ -84,7 +94,8 @@ class MobileDrawer extends StatelessWidget {
                   'assets/icons/app-store.png',
                   'iOS cihazlar için',
                   () {
-                    // TODO: Add App Store link
+                    Navigator.pop(context);
+                    const MobileDrawer()._launchUrl(appStoreUrl);
                   },
                 ),
                 const SizedBox(height: 16),
@@ -93,7 +104,8 @@ class MobileDrawer extends StatelessWidget {
                   'assets/icons/play-store.webp',
                   'Android cihazlar için',
                   () {
-                    // TODO: Add Play Store link
+                    Navigator.pop(context);
+                    const MobileDrawer()._launchUrl(playStoreUrl);
                   },
                 ),
                 const SizedBox(height: 24),
@@ -216,7 +228,8 @@ class MobileDrawer extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(4),
                         ),
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 8),
                       ),
                       child: const Row(
                         mainAxisSize: MainAxisSize.min,
@@ -251,7 +264,8 @@ class MobileDrawer extends StatelessWidget {
             const SizedBox(height: 16),
             Expanded(
               child: ListView(
-                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                 children: [
                   _buildDrawerItem(
                     icon: Icons.home_rounded,

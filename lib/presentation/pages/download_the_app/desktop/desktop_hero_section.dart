@@ -2,6 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+// URL'leri sabit olarak tanımlayalım
+const String appStoreUrl =
+    'https://apps.apple.com/tr/app/tabiki/id6742362151?l=tr';
+const String playStoreUrl =
+    'https://play.google.com/store/apps/details?id=com.tabiki.app';
+
+// URL açma işlemi için yardımcı fonksiyon
+Future<void> _launchUrl(String urlString) async {
+  final Uri url = Uri.parse(urlString);
+  if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+    debugPrint('Could not launch $urlString');
+  }
+}
 
 Widget desktopBuildHeroSection(BuildContext context) {
   return SizedBox(
@@ -20,7 +35,8 @@ Widget desktopBuildHeroSection(BuildContext context) {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(
                     color: const Color(0xFF34D399).withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(30),
@@ -62,13 +78,13 @@ Widget desktopBuildHeroSection(BuildContext context) {
                       context,
                       'assets/icons/app-store.png',
                       'App Store\'dan İndir',
-                      () {},
+                      () => _launchUrl(appStoreUrl),
                     ).animate().fadeIn(delay: 600.ms).slideX(),
                     _buildStoreButton(
                       context,
                       'assets/icons/play-store.webp',
                       'Google Play\'den İndir',
-                      () {},
+                      () => _launchUrl(playStoreUrl),
                     ).animate().fadeIn(delay: 800.ms).slideX(),
                   ],
                 ),

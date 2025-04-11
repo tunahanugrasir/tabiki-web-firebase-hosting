@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
+import 'package:tabiki_web/presentation/pages/download_the_app/desktop/desktop_hero_section.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class TabletHomePageFooter extends StatelessWidget {
@@ -80,14 +81,26 @@ class TabletHomePageFooter extends StatelessWidget {
                     child: _buildFooterColumn(
                       context,
                       title: "Hizmetlerimiz",
-                      items: const ["Üreticimiz Ol", "Uygulamamızı İndir", "Mağazalarımız", "İsrafı Önleyelim", "İletişim"],
+                      items: const [
+                        "Üreticimiz Ol",
+                        "Uygulamamızı İndir",
+                        "Mağazalarımız",
+                        "İsrafı Önleyelim",
+                        "İletişim"
+                      ],
                     ),
                   ),
                   Expanded(
                     child: _buildFooterColumn(
                       context,
                       title: "Bizi Takip Edin",
-                      items: const ["Instagram", "Facebook", "Youtube", "Twitter", "LinkedIn"],
+                      items: const [
+                        "Instagram",
+                        "Facebook",
+                        "Youtube",
+                        "Twitter",
+                        "LinkedIn"
+                      ],
                     ),
                   ),
                 ],
@@ -172,7 +185,7 @@ class TabletHomePageFooter extends StatelessWidget {
             icon: const Icon(Icons.apple, color: Colors.white, size: 20),
             title: 'App Store',
             subtitle: 'Download on the',
-            onTap: () => _launchURL('https://apps.apple.com/your-app-link'),
+            onTap: () => _launchURL(appStoreUrl),
           ),
           _buildStoreButton(
             context,
@@ -183,7 +196,8 @@ class TabletHomePageFooter extends StatelessWidget {
             ),
             title: 'Google Play',
             subtitle: 'GET IT ON',
-            onTap: () => _launchURL('https://play.google.com/store/apps/your-app-link'),
+            onTap: () =>
+                _launchURL(playStoreUrl),
           ),
         ],
       ),

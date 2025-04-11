@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
+import 'package:tabiki_web/presentation/pages/download_the_app/desktop/desktop_hero_section.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomePageFooter extends StatelessWidget {
@@ -76,10 +77,12 @@ class HomePageFooter extends StatelessWidget {
                             spacing: 16,
                             children: [
                               InkWell(
-                                onTap: () => _launchURL('https://apps.apple.com/your-app-link'),
+                                onTap: () => _launchURL(
+                                   appStoreUrl),
                                 child: Container(
                                   height: context.sized.height * 0.050,
-                                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 8),
                                   decoration: BoxDecoration(
                                     color: Colors.black,
                                     borderRadius: BorderRadius.circular(8),
@@ -87,11 +90,14 @@ class HomePageFooter extends StatelessWidget {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      const Icon(Icons.apple, color: Colors.white, size: 20),
+                                      const Icon(Icons.apple,
+                                          color: Colors.white, size: 20),
                                       const SizedBox(width: 4),
                                       Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             'Download on the',
@@ -115,10 +121,13 @@ class HomePageFooter extends StatelessWidget {
                                 ),
                               ),
                               InkWell(
-                                onTap: () => _launchURL('https://play.google.com/store/apps/your-app-link'),
+                                onTap: () => _launchURL(
+                                  playStoreUrl,
+                                ),
                                 child: Container(
                                   height: context.sized.height * 0.050,
-                                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 8),
                                   decoration: BoxDecoration(
                                     color: Colors.black,
                                     borderRadius: BorderRadius.circular(8),
@@ -133,8 +142,10 @@ class HomePageFooter extends StatelessWidget {
                                       ),
                                       const SizedBox(width: 4),
                                       Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
                                         children: [
                                           Text(
                                             'GET IT ON',

@@ -2,7 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
-
+import 'package:tabiki_web/presentation/pages/download_the_app/desktop/desktop_hero_section.dart';
+import 'package:url_launcher/url_launcher.dart';
+// URL açma işlemi için yardımcı fonksiyon
+Future<void> _launchUrl(String urlString) async {
+  final Uri url = Uri.parse(urlString);
+  if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+    debugPrint('Could not launch $urlString');
+  }
+}
 Widget mobileDownloadHeroSection(BuildContext context) {
   return SizedBox(
     height: context.sized.height,
@@ -55,14 +63,14 @@ Widget mobileDownloadHeroSection(BuildContext context) {
                     context,
                     'assets/icons/app-store.png',
                     'App Store\'dan İndir',
-                    () {},
+                    () => _launchUrl(appStoreUrl),
                   ).animate().fadeIn(delay: 600.ms).slideX(),
                   const SizedBox(height: 16),
                   _buildStoreButton(
                     context,
                     'assets/icons/play-store.webp',
                     'Google Play\'den İndir',
-                    () {},
+                    () => _launchUrl(playStoreUrl),
                   ).animate().fadeIn(delay: 800.ms).slideX(),
                 ],
               ),

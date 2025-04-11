@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
 import 'package:tabiki_web/presentation/pages/home/tablet/tablet_page_header.dart';
+import 'package:tabiki_web/presentation/pages/widgets/mobile/mobile_layout_drawer.dart';
 
 class TabletHomePageOne extends StatelessWidget {
   const TabletHomePageOne({
@@ -50,7 +51,9 @@ class TabletHomePageOne extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {},
+             onPressed: () {
+                MobileDrawer.showDownloadDialog(context);
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromRGBO(51, 110, 122, 1),
                 foregroundColor: Colors.white,

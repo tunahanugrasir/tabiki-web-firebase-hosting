@@ -10,7 +10,8 @@ class DesktopLayoutLegalNotices extends StatefulWidget {
   const DesktopLayoutLegalNotices({super.key});
 
   @override
-  State<DesktopLayoutLegalNotices> createState() => _DesktopLayoutLegalNoticesState();
+  State<DesktopLayoutLegalNotices> createState() =>
+      _DesktopLayoutLegalNoticesState();
 }
 
 class _DesktopLayoutLegalNoticesState extends State<DesktopLayoutLegalNotices> {
@@ -43,7 +44,9 @@ class _DesktopLayoutLegalNoticesState extends State<DesktopLayoutLegalNotices> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          if (sectionData != null) ...sectionData.notices.map((notice) => _buildSection(notice)),
+                          if (sectionData != null)
+                            ...sectionData.notices
+                                .map((notice) => _buildSection(notice)),
                         ],
                       ),
                     ),

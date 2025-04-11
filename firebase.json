@@ -49,5 +49,27 @@
       }
     ],
     "cleanUrls": true
+  },
+  "functions": {
+    "source": "functions",
+    "runtime": "nodejs18",
+    "ignore": [
+      "node_modules",
+      ".git",
+      "firebase-debug.log",
+      "firebase-debug.*.log",
+      "*.local"
+    ],
+    "predeploy": [
+      "npm --prefix \"$RESOURCE_DIR\" run lint",
+      "npm --prefix \"$RESOURCE_DIR\" run build"
+    ],
+    "vpcConnector": "NOT_SPECIFIED",
+    "ingressSettings": "ALLOW_ALL"
+  },
+  "emulators": {
+    "functions": {
+      "port": 5001
+    }
   }
 }

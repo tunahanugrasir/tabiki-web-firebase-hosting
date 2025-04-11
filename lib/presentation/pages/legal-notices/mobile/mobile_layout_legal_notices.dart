@@ -8,7 +8,8 @@ class MobileLayoutLegalNotices extends StatefulWidget {
   const MobileLayoutLegalNotices({super.key});
 
   @override
-  State<MobileLayoutLegalNotices> createState() => _MobileLayoutLegalNoticesState();
+  State<MobileLayoutLegalNotices> createState() =>
+      _MobileLayoutLegalNoticesState();
 }
 
 class _MobileLayoutLegalNoticesState extends State<MobileLayoutLegalNotices> {
@@ -37,7 +38,8 @@ class _MobileLayoutLegalNoticesState extends State<MobileLayoutLegalNotices> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (sectionData != null) ...sectionData.notices.map((notice) => _buildSection(notice)),
+            if (sectionData != null)
+              ...sectionData.notices.map((notice) => _buildSection(notice)),
             const MobileFooter(backgroundColor: Colors.white),
           ],
         ),
