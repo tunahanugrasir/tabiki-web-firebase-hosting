@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
-import 'package:tabiki_web/presentation/pages/download_the_app/desktop/desktop_hero_section.dart';
+import 'package:tabiki_web/core/constants/store_links.dart';
+import 'package:tabiki_web/core/widgets/optimized_asset_image.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 // URL açma işlemi için yardımcı fonksiyon
 Future<void> _launchUrl(String urlString) async {
   final Uri url = Uri.parse(urlString);
@@ -11,25 +13,36 @@ Future<void> _launchUrl(String urlString) async {
     debugPrint('Could not launch $urlString');
   }
 }
+
 Widget mobileDownloadHeroSection(BuildContext context) {
+  final screenHeight = context.sized.height;
+  final screenWidth = context.sized.width;
+  final devicePixelRatio = MediaQuery.devicePixelRatioOf(context);
+  final mockupHeight = screenHeight * 0.5;
+  final mockupWidth = screenWidth * 1.5;
+
   return SizedBox(
-    height: context.sized.height,
-    width: context.sized.width,
+    height: screenHeight,
+    width: screenWidth,
     child: Stack(
       children: [
         Positioned(
-          top: context.sized.height * 0.5,
-          left: context.sized.width * 0.2,
-          child: Image.asset(
-            'assets/mockups/3.webp',
-            height: context.sized.height * 0.5,
-            width: context.sized.width * 1.5,
-            fit: BoxFit.contain,
-          ).animate().fadeIn(delay: 1000.ms).scale(),
+          top: screenHeight * 0.5,
+          left: screenWidth * 0.2,
+          child: RepaintBoundary(
+            child: OptimizedAssetImage(
+              assetName: 'assets/mockups/3.webp',
+              height: mockupHeight,
+              width: mockupWidth,
+              fit: BoxFit.contain,
+              cacheWidth: (mockupWidth * devicePixelRatio).round(),
+              cacheHeight: (mockupHeight * devicePixelRatio).round(),
+            ).animate().fadeIn(delay: 1000.ms).scale(),
+          ),
         ),
         Padding(
           padding: EdgeInsets.only(
-            top: context.sized.height * 0.12,
+            top: screenHeight * 0.12,
             left: 24,
             right: 24,
             bottom: 40,

@@ -115,7 +115,8 @@ Widget tabletBuildFeatureSection(BuildContext context) {
               MouseRegion(
                 cursor: SystemMouseCursors.click,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                   decoration: BoxDecoration(
                     color: const Color(0xFF059669),
                     borderRadius: BorderRadius.circular(32),
@@ -147,9 +148,9 @@ Widget tabletBuildFeatureSection(BuildContext context) {
                     ],
                   ),
                 ),
-              ).animate().fadeIn(delay: 800.ms).shimmer(
-                    duration: 2000.ms,
-                    color: Colors.white.withValues(alpha: 0.2),
+              ).animate().fadeIn(delay: 800.ms).scale(
+                    duration: 350.ms,
+                    curve: Curves.easeOutCubic,
                   ),
             ],
           ),

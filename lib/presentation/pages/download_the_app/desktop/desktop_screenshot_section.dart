@@ -2,12 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
+import 'package:tabiki_web/core/widgets/optimized_asset_image.dart';
 
 Widget dekstopBuildScreenshotsSection(BuildContext context) {
+  final screenWidth = context.sized.width;
+  final screenHeight = context.sized.height;
+  final devicePixelRatio = MediaQuery.devicePixelRatioOf(context);
+
   return Container(
-    width: context.sized.width,
+    width: screenWidth,
     padding: EdgeInsets.symmetric(
-      horizontal: context.sized.width * 0.1,
+      horizontal: screenWidth * 0.1,
       vertical: 80,
     ),
     child: Column(
@@ -19,7 +24,8 @@ Widget dekstopBuildScreenshotsSection(BuildContext context) {
               child: Column(
                 children: [
                   Container(
-                    padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 32),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 24, horizontal: 32),
                     width: context.sized.width * 0.6,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,39 +45,31 @@ Widget dekstopBuildScreenshotsSection(BuildContext context) {
                           textAlign: TextAlign.center,
                           style: GoogleFonts.merriweather(
                             fontSize: 18,
-                            color: const Color(0xFF065F46).withValues(alpha: 0.8),
+                            color:
+                                const Color(0xFF065F46).withValues(alpha: 0.8),
                           ),
                         ),
                       ],
                     ),
                   ).animate().fadeIn(delay: 200.ms).slideY(begin: -0.2),
                   const SizedBox(height: 24),
-                  Container(
-                    width: context.sized.width,
-                    height: context.sized.height * 0.7,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(24),
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(24),
-                      child: Image.asset(
-                        details['image']!,
+                  RepaintBoundary(
+                    child: SizedBox(
+                      width: screenWidth,
+                      height: screenHeight * 0.7,
+                      child: OptimizedAssetImage(
+                        assetName: details['image']!,
                         fit: BoxFit.contain,
+                        borderRadius: BorderRadius.circular(24),
+                        cacheWidth: (screenWidth * devicePixelRatio).round(),
+                        cacheHeight:
+                            (screenHeight * 0.7 * devicePixelRatio).round(),
                       ),
-                    ),
-                  )
-                      .animate(
-                        onPlay: (controller) => controller.repeat(),
-                      )
-                      .shimmer(
-                        duration: 2000.ms,
-                        color: Colors.white.withValues(alpha: 0.2),
-                      )
-                      .animate()
-                      .scale(
-                        duration: 800.ms,
-                        curve: Curves.easeOutBack,
-                      ),
+                    ).animate().scale(
+                          duration: 500.ms,
+                          curve: Curves.easeOutCubic,
+                        ),
+                  ),
                 ],
               ),
             );
@@ -86,11 +84,13 @@ final List<Map<String, String>> _screenshotDetails = [
   {
     'image': 'assets/mockups/1.webp',
     'title': 'Bölgenizdeki Üreticileri ve Ürünlerini Keşfedin',
-    'description': 'Yerel üreticilerimizin taze ve doğal ürünlerine doğrudan ulaşın',
+    'description':
+        'Yerel üreticilerimizin taze ve doğal ürünlerine doğrudan ulaşın',
   },
   {
     'image': 'assets/mockups/2.webp',
     'title': 'İstediğiniz Yere, İstediğiniz Zaman Sipariş Verin',
-    'description': 'Siparişlerinizi kolayca oluşturun ve anlık olarak takip edin',
+    'description':
+        'Siparişlerinizi kolayca oluşturun ve anlık olarak takip edin',
   },
 ];

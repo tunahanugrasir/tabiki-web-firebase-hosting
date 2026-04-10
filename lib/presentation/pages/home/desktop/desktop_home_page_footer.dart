@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
-import 'package:tabiki_web/presentation/pages/download_the_app/desktop/desktop_hero_section.dart';
+import 'package:tabiki_web/core/constants/store_links.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomePageFooter extends StatelessWidget {

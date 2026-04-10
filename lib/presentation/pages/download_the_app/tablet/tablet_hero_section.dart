@@ -3,17 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
-import 'package:tabiki_web/presentation/pages/download_the_app/desktop/desktop_hero_section.dart';
+import 'package:tabiki_web/core/constants/store_links.dart';
+import 'package:tabiki_web/core/widgets/optimized_asset_image.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 Future<void> _launchUrl(String urlString) async {
   final Uri url = Uri.parse(urlString);
   if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
     debugPrint('Could not launch $urlString');
   }
 }
+
 Widget tabletBuildHeroSection(BuildContext context) {
+  final screenHeight = context.sized.height;
+  final devicePixelRatio = MediaQuery.devicePixelRatioOf(context);
+  final mockupHeight = screenHeight * 0.7;
+
   return SizedBox(
-    height: context.sized.height * 0.8,
+    height: screenHeight * 0.8,
     width: context.sized.width,
     child: Row(
       children: [
@@ -28,7 +35,8 @@ Widget tabletBuildHeroSection(BuildContext context) {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(
                     color: const Color(0xFF34D399).withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(30),
@@ -70,7 +78,7 @@ Widget tabletBuildHeroSection(BuildContext context) {
                       context,
                       'assets/icons/app-store.png',
                       'App Store\'dan İndir',
-                       () => _launchUrl(appStoreUrl),
+                      () => _launchUrl(appStoreUrl),
                     ).animate().fadeIn(delay: 600.ms).slideX(),
                     _buildStoreButton(
                       context,
@@ -88,10 +96,13 @@ Widget tabletBuildHeroSection(BuildContext context) {
           child: Stack(
             alignment: Alignment.centerRight,
             children: [
-              Image.asset(
-                'assets/mockups/3.webp',
-                height: context.sized.height * 0.7,
-              )
+              RepaintBoundary(
+                child: OptimizedAssetImage(
+                  assetName: 'assets/mockups/3.webp',
+                  height: mockupHeight,
+                  cacheHeight: (mockupHeight * devicePixelRatio).round(),
+                ),
+              ),
             ],
           ),
         ),

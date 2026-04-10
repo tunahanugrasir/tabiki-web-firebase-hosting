@@ -2,14 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
+import 'package:tabiki_web/core/widgets/optimized_asset_image.dart';
 
 Widget mobileDownloadScreenshotSection(BuildContext context) {
+  final screenWidth = context.sized.width;
+  final screenHeight = context.sized.height;
+  final devicePixelRatio = MediaQuery.devicePixelRatioOf(context);
+
   return Container(
-    width: context.sized.width,
-    height: context.sized.height * 3,
+    width: screenWidth,
+    height: screenHeight * 3,
     padding: EdgeInsets.symmetric(
-      horizontal: context.sized.width * 0.05,
-      vertical: context.sized.height * 0.05,
+      horizontal: screenWidth * 0.05,
+      vertical: screenHeight * 0.05,
     ),
     child: Column(
       children: _screenshotDetails.map((details) {
@@ -54,11 +59,16 @@ Widget mobileDownloadScreenshotSection(BuildContext context) {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SizedBox(
-                  width: context.sized.width,
-                  height: context.sized.height * 0.5,
-                  child: Image.asset(
-                    details['images'][0],
-                    fit: BoxFit.cover,
+                  width: screenWidth,
+                  height: screenHeight * 0.5,
+                  child: RepaintBoundary(
+                    child: OptimizedAssetImage(
+                      assetName: details['images'][0],
+                      fit: BoxFit.cover,
+                      cacheWidth: (screenWidth * devicePixelRatio).round(),
+                      cacheHeight:
+                          (screenHeight * 0.5 * devicePixelRatio).round(),
+                    ),
                   ),
                 ).animate().slideX(
                       begin: 1,
@@ -72,11 +82,16 @@ Widget mobileDownloadScreenshotSection(BuildContext context) {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SizedBox(
-                  height: context.sized.height * 0.5,
-                  width: context.sized.width,
-                  child: Image.asset(
-                    details['images'][1],
-                    fit: BoxFit.cover,
+                  height: screenHeight * 0.5,
+                  width: screenWidth,
+                  child: RepaintBoundary(
+                    child: OptimizedAssetImage(
+                      assetName: details['images'][1],
+                      fit: BoxFit.cover,
+                      cacheWidth: (screenWidth * devicePixelRatio).round(),
+                      cacheHeight:
+                          (screenHeight * 0.5 * devicePixelRatio).round(),
+                    ),
                   ),
                 ).animate().slideX(
                       begin: -1,
@@ -97,11 +112,13 @@ final List<Map<String, dynamic>> _screenshotDetails = [
   {
     'images': ['assets/mobile/6.webp', 'assets/mobile/7.webp'],
     'title': 'Bölgenizdeki Üreticileri ve Ürünlerini Keşfedin',
-    'description': 'Yerel üreticilerimizin taze ve doğal ürünlerine doğrudan ulaşın',
+    'description':
+        'Yerel üreticilerimizin taze ve doğal ürünlerine doğrudan ulaşın',
   },
   {
     'images': ['assets/mobile/8.webp', 'assets/mobile/9.webp'],
     'title': 'İstediğiniz Yere, İstediğiniz Zaman Sipariş Verin',
-    'description': 'Siparişlerinizi kolayca oluşturun ve anlık olarak takip edin',
+    'description':
+        'Siparişlerinizi kolayca oluşturun ve anlık olarak takip edin',
   },
 ];

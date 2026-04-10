@@ -2,13 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
+import 'package:tabiki_web/core/constants/store_links.dart';
+import 'package:tabiki_web/core/widgets/optimized_asset_image.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-// URL'leri sabit olarak tanımlayalım
-const String appStoreUrl =
-    'https://apps.apple.com/tr/app/tabiki/id6742362151?l=tr';
-const String playStoreUrl =
-    'https://play.google.com/store/apps/details?id=com.tabiki.app';
 
 // URL açma işlemi için yardımcı fonksiyon
 Future<void> _launchUrl(String urlString) async {
@@ -19,8 +15,13 @@ Future<void> _launchUrl(String urlString) async {
 }
 
 Widget desktopBuildHeroSection(BuildContext context) {
+  final screenHeight = context.sized.height;
+  final devicePixelRatio = MediaQuery.devicePixelRatioOf(context);
+  final mockupHeight = screenHeight * 0.7;
+  final imageCacheHeight = (mockupHeight * devicePixelRatio).round();
+
   return SizedBox(
-    height: context.sized.height * 0.8,
+    height: screenHeight * 0.8,
     width: context.sized.width,
     child: Row(
       children: [
@@ -96,10 +97,13 @@ Widget desktopBuildHeroSection(BuildContext context) {
           child: Stack(
             alignment: Alignment.centerRight,
             children: [
-              Image.asset(
-                'assets/mockups/3.webp',
-                height: context.sized.height * 0.7,
-              )
+              RepaintBoundary(
+                child: OptimizedAssetImage(
+                  assetName: 'assets/mockups/3.webp',
+                  height: mockupHeight,
+                  cacheHeight: imageCacheHeight,
+                ),
+              ),
             ],
           ),
         ),
