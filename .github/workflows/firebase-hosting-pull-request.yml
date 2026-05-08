@@ -21,6 +21,11 @@ jobs:
       - run: flutter --version
       - run: flutter pub get
       - run: flutter build web
+      - name: Copy Deep Linking Files
+        run: |
+          mkdir -p build/web/.well-known
+          cp web/.well-known/apple-app-site-association build/web/.well-known/apple-app-site-association
+          cp web/.well-known/assetlinks.json build/web/.well-known/assetlinks.json
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
