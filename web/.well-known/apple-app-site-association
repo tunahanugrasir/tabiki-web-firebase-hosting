@@ -1,0 +1,31 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": [
+          "FD6D3HC637.com.tabiki.app",
+          "FD6D3HC637.com.tabiki.app.dev"
+        ],
+        "components": [
+          {
+            "/": "/product-detail",
+            "comment": "Managed product detail links"
+          },
+          {
+            "/": "/horeca-product-detail",
+            "comment": "HoReCa product detail links"
+          },
+          {
+            "/": "/producer/*",
+            "comment": "Producer story links"
+          },
+          {
+            "/": "/producer-story",
+            "comment": "Producer story query links"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,25 +1,11 @@
 [
   {
-    "relation": [
-      "delegate_permission/common.handle_all_urls"
-    ],
-    "target": {
-      "namespace": "android_app",
-      "package_name": "co.tabiki.app",
-      "sha256_cert_fingerprints": [
-        "E7:07:64:25:26:D5:9A:E2:69:31:EF:FA:EC:A7:BE:D2:7D:8E:7F:EB:77:CA:A5:DC:F8:40:AC:F5:01:40:EE:D5"
-      ]
-    }
-  },
-  {
-    "relation": [
-      "delegate_permission/common.handle_all_urls",
-      "delegate_permission/common.get_login_creds"
-    ],
+    "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
       "package_name": "com.tabiki.app",
       "sha256_cert_fingerprints": [
+        "E7:07:64:25:26:D5:9A:E2:69:31:EF:FA:EC:A7:BE:D2:7D:8E:7F:EB:77:CA:A5:DC:F8:40:AC:F5:01:40:EE:D5",
         "78:21:E6:3B:1C:D9:48:92:A8:C8:77:BD:FC:A9:7D:93:E5:DD:ED:0A:0B:DB:A2:F8:72:0E:57:F0:70:42:82:94"
       ]
     }
