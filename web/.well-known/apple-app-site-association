@@ -3,6 +3,13 @@
     "apps": [],
     "details": [
       {
+        "appID": "FD6D3HC637.com.tabiki.app",
+        "paths": [
+          "/product-detail*",
+          "/horeca-product-detail*",
+          "/producer/*",
+          "/producer-story*"
+        ],
         "appIDs": [
           "FD6D3HC637.com.tabiki.app",
           "FD6D3HC637.com.tabiki.app.dev"
